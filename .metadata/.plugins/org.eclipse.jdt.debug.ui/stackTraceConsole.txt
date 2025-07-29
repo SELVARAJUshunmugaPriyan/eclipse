@@ -1,0 +1,22 @@
+org.mockito.exceptions.misusing.PotentialStubbingProblem: 
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'findUserById' method:
+    userRepository.findUserById(0);
+    -> at com.example.test.UserService.getUserName(UserService.java:14)
+ - has following stubbing(s) with different arguments:
+    1. userRepository.findUserById(1);
+      -> at com.example.test.UserServiceTest.shouldGetUserById(UserServiceTest.java:27)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+	at com.example.test.UserService.getUserName(UserService.java:14)
+	at com.example.test.UserServiceTest.shouldGetUserById(UserServiceTest.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

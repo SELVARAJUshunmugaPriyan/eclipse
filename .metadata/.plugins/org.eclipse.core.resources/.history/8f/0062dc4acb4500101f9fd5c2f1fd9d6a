@@ -1,0 +1,22 @@
+package forThree;
+
+public class NestedForStringStringReversalOne {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s = "I,am,an,Engineer";
+		for(String t : s.split(",")) {
+			boolean isLowerCase = false;
+			if(t.equals(t.toLowerCase()))
+				isLowerCase = true;
+			t = t.toLowerCase();
+			for(int i = t.length() - 1; i >= 0; i--)
+				if(i == t.length() - 1 && !isLowerCase)
+					System.out.print(t.toUpperCase().charAt(i));
+//				else
+//					System.out.print(t.charAt(i));
+			System.out.print(" ");
+		}
+	}
+
+}

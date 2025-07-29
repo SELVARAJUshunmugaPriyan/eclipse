@@ -1,0 +1,49 @@
+package solution;
+
+public class SolutionAmstrongNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		int i = 153;
+		for(int i = 153; i < 154; i++)
+			if(amstrongNum(i))
+				System.out.println(i + " is a Amstrong number");
+//			else
+//				System.out.print(i + " is not a Amstrong number");
+	}
+	
+	public static boolean amstrongNum(int num) {
+		int n = (int) Math.log10(num) + 1, sum = 0, temp = num;
+		
+		for(int i = 1; i <= n; i++) {
+			int r = temp % 10;
+			sum += power(0, r, n);
+			temp /= 10;
+		}
+		
+		if(sum == num)
+			return true;
+		
+		return false;
+	}
+	
+	static int power(int i, int x, long y)
+    {          
+
+    	System.out.print(i++ + " " + x + " " + y / 2);
+        if (y == 0)
+            return 1;
+        if (y % 2 == 0) {
+        	int j = power(i, x, y / 2) * power(i, x, y / 2);
+        	System.out.println(" " + j);
+            return j;
+        }
+        int j = x * power(i, x, y / 2) * power(i, x, y / 2);
+    	System.out.println(" " + j);
+        return j;
+    }
+}
+
+/*
+ - Divide by 10
+ */

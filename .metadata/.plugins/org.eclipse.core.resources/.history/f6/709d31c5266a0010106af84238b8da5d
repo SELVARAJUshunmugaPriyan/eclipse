@@ -1,0 +1,14 @@
+package javaClasses;
+
+public class FunctionalProgramming {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Runnable run = () -> System.out.println("Running inside runnable");
+		
+		run.run();
+		
+		System.out.println("Running inside main method");
+	}
+
+}

@@ -1,0 +1,21 @@
+package solution;
+
+public class SolutionAmstrongNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int i = 153;
+		
+		if(amstrongNum(i))
+			System.out.print(i + " is a Amstrong number");
+		else
+			System.out.print(i + " is not a Amstrong number");
+	}
+	
+	public static boolean amstrongNum(int num) {
+		short[] N = {};
+		System.out.println((int) Math.log10(153) + 1);
+		return false;
+	} 
+
+}

@@ -1,0 +1,17 @@
+package com.example.test;
+
+public class UserService {
+	
+	private final TestRepository testRepository;
+	
+	public UserService(TestRepository testRepository)
+	{
+		this.testRepository = testRepository;
+	}
+	
+	public String getUserName(int userId)
+	{
+		return testRepository.findUserById(userId);
+	}
+
+}

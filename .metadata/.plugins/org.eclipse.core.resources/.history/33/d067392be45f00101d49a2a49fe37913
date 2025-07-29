@@ -1,0 +1,147 @@
+package javaPracticePatterns;
+
+import java.util.Scanner;
+
+@SuppressWarnings("unused")
+public class MediumPatterns {
+	
+	private static final boolean DEBUG = true;
+	
+	private static void hollowDiamond(Integer n)
+	{
+		if (DEBUG) System.out.printf("In hollowDiamond(Int=%d)\n", n);
+		System.out.println("Hollow diamond pattern:");
+		
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= (n - i + 1); j++) {
+				System.out.print("*");
+			}
+			for (int j = 1; j <= 2 * (i - 1); j++) {
+				System.out.print(" ");
+			}
+			for (int j = 1; j <= (n - i + 1); j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		for (int i = n; i >= 1; i--) {
+			for (int j = 1; j <= (n - i + 1); j++) {
+				System.out.print("*");
+			}
+			for (int j = 1; j <= 2 * (i - 1); j++) {
+				System.out.print(" ");
+			}
+			for (int j = 1; j <= (n - i + 1); j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+	
+	private static void butterFlyThree(Integer n)
+	{
+		if (DEBUG) System.out.printf("In butterFlyThree(Int=%d)\n", n);
+		System.out.println("Butterfly pattern:");
+		
+		for (int i = 1; i <= 2 * n; i++) {
+			for (int j = 1; j <= 2 * n; j++)
+				if (i <= n && (j <= i || i + j > 2 * n) || 
+					i > n && (j >= i || i + j - 1 <= 2 * n))
+					System.out.print("*");
+				else
+					System.out.print(" ");
+			System.out.println();
+		}
+	}
+	
+	private static void xMark(Integer n)
+	{
+		if (DEBUG) System.out.printf("In xMark(Int=%d)\n", n);
+		System.out.println("X-Mark pattern:");
+		
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= n; j++)
+				if (i + j == n + 1)
+					System.out.print("/");
+				else if (j == i)
+					System.out.print("\\");
+				else
+					System.out.print("*");
+			System.out.println();
+		}
+	}
+	
+	private static void decRevrsRollNumbrs(Integer n)
+	{
+		if (DEBUG) System.out.printf("In decRevrsRollNumbrs(Int=%d)\n", n);
+		System.out.println("Decreasing reverse rolling numbers pattern: ");
+		
+		for (int i = n; i >= 0; i--) {
+			for (int j = i; j >= 0; j--)
+				System.out.print(j + " ");
+			System.out.println();
+		}
+	}
+	
+	private static void increasingVSyncNumbers(Integer n)
+	{
+		if (DEBUG) System.out.printf("In increasingVSyncNumbers(Int=%d)\n", n);
+		System.out.println("Increasing V-sync numbers pattern: ");
+		
+		for (int i = 1; i <= n; i++) {
+			int start = i;
+			for (int j = 1, k = n - 1; j < i; j++, k--)
+				start += k;
+			
+			if (DEBUG) System.out.println("start=" + start);
+			
+			for (int j = 1, k = n - i; j <= i; j++, k++, start -= k)
+				System.out.print(start + " ");
+			System.out.println();
+		}
+	}
+	
+	private static void increasingVSyncNumbers(int n)
+	{
+		if (DEBUG) System.out.printf("In increasingVSyncNumbers(int=%d)\n", n);
+		System.out.println("Increasing V-sync numbers pattern: ");
+		
+		int p, k = 1;
+		for (int i = 1; i <= n; i++) {
+			p = k;
+			
+			for (int j = 1; j <= i; j++) {
+				System.out.print(p + " ");
+				p = p - (n - i + j);
+			}
+			System.out.println();
+			k = k + 1 + n - i;
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try (Scanner scn = new Scanner(System.in)) {
+			while (true) {
+				System.out.println("Enter a non-zero positive integer: ");
+				int n;
+				
+				try {
+					n = Integer.parseInt(scn.nextLine());
+				} catch (NumberFormatException e) {
+					continue;
+				}
+				
+//				hollowDiamond(Integer.valueOf(n));
+				butterFlyThree(n);
+//				xMark(n);
+//				decRevrsRollNumbrs(n);
+//				increasingVSyncNumbers(n);
+			}
+		} catch (java.util.NoSuchElementException e) {
+			System.out.println("Closing System.in resource");
+		}
+	}
+
+}

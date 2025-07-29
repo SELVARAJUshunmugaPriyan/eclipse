@@ -1,0 +1,35 @@
+package javaCollectionExercises;
+
+import java.util.Map;
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class StringOccurencesCountHashMapCollections {
+	
+	StringOccurencesCountHashMapCollections() 
+	{
+		Map<String, Integer> words = new HashMap<>();
+		
+		System.out.println("Enter a string: ");
+		try (Scanner scn = new Scanner(System.in)) {
+			String sentence = scn.nextLine();
+			
+			for (String word : sentence.split(" "))
+				if (words.containsKey(word))
+					words.put(word, words.get(word) + 1);
+				else
+					words.put(word, 1);
+			
+			words.forEach((k, v) -> System.out.print(
+					k + ":" + v + "  "));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new CountOccurencesUsingHashMapCollections();
+	}
+
+}

@@ -1,0 +1,63 @@
+package javaClasses;
+
+import java.util.List;
+import java.util.Arrays;
+
+public class FunctionalProgramming {
+
+	@SuppressWarnings("unused")
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// Old Method
+		Runnable run = new Runnable() {
+				@Override
+				public void run()
+				{
+					System.out.println("Java 1.7");
+				}
+			};
+		
+		run = () -> System.out.println("Java 1.8");
+		
+//		run.run();
+//		
+//		System.out.println("Running inside main method");
+		
+		List<Integer> numbers = Arrays.asList(11, 22, 33, 44,
+									  		  55, 66, 77, 88,
+									  		  99, 100);
+		
+//		for (int i : numbers)
+//			System.out.print(i + ( i == 100 ? "\n" : " " ));
+//		
+//		for (int i = 0; i < numbers.size(); i++)
+//			System.out.print(numbers.get(i) + ( i == numbers.size() - 1 ? "\n" : " " ));
+//		
+//		numbers.forEach(x -> System.out.print(x + ( x == 100 ? "\n" : " " )));
+		
+		int res = 0;
+		
+		for (int n : numbers)
+			res += n % 2 == 0 ? n * 2 : 0 ;
+		
+		System.out.println(res);
+		
+		java.util.stream.IntStream.range(0, 1)
+								  .mapToObj(i -> numbers.stream().parallel()
+										  				.filter(x -> x % 2 == 0)
+										  				.mapToInt(x -> x * 2)
+										  				.sum())
+								  .forEach(System.out::println);
+		
+//		java.util.stream.IntStream.range(0, 1)
+//								  .mapToObj(i -> numbers.stream().parallel()
+//										  				.filter(x -> x % 2 == 0)
+//										  				.mapToInt(x -> {
+//										  						res += x * 2;	// Error
+//										  						return res;		// Error
+//										  					}))
+//								  .forEach(System.out::println);
+	}
+
+}

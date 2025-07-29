@@ -1,0 +1,89 @@
+package oops;
+
+class Compressor
+{
+	private String brand;
+	private int capacity;
+	
+	public void setBrand(String brand)
+	{
+		this.brand = brand;
+	}
+	
+	public void setCapacity(int capacity)
+	{
+		this.capacity = capacity;
+	}
+	
+	public String getBrand()
+	{
+		return this.brand;
+	}
+	
+	public int getCapacity()
+	{
+		return this.capacity;
+	}
+}
+
+class AC
+{
+	private String color;
+	private int price;
+	private Compressor compressor;
+	
+	public void setColor(String color)
+	{
+		this.color = color;
+	}
+	
+	public void setPrice(int price)
+	{
+		this.price = price;
+	}
+	
+	public void setCompressor(Compressor compressor)
+	{
+		this.compressor = compressor;
+	}
+	
+	public String getColor()
+	{
+		return this.color;
+	}
+	
+	public int getPrice()
+	{
+		return this.price;
+	}
+	
+	public Compressor getCompressor()
+	{
+		return this.compressor;
+	}
+}
+
+public class UseAC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		Compressor c = new Compressor();
+//		
+//		c.setBrand("NEXO");
+//		c.setCapacity(1200);
+		
+		AC ac = new AC();
+		
+		ac.setColor("white");
+		ac.setPrice(12000);
+		ac.setCompressor(new Compressor());
+		ac.getCompressor().setBrand("NEXO");
+		ac.getCompressor().setCapacity(1200);
+		
+		System.out.print(ac.getColor() + " " + ac.getPrice()
+				+ " " + ac.getCompressor().getBrand()
+				+ " " + ac.getCompressor().getCapacity()
+				+ " " + ac.getCompressor());
+	}
+
+}

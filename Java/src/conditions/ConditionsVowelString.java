@@ -1,0 +1,17 @@
+package conditions;
+
+public class ConditionsVowelString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s= "swyggy";
+		
+		if (s.contains("a") || s.contains("e") || s.contains("i") || s.contains("o") || s.contains("u")) {
+			System.out.println("Vowel string");
+		} else {
+			System.out.println("Not a vowel string");
+		}
+		
+	}
+
+}

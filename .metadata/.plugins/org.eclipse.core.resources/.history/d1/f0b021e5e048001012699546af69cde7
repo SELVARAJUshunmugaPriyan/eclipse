@@ -1,0 +1,14 @@
+package loop;
+
+public class LoopsStringSplit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String t = ",,,,,,";
+		String[] S = t.split(",");
+		
+		for(String s : S)
+			System.out.println(S.length);
+	}
+	
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;LMS{TypeConversion.java[TypeConversion&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;LMS{TaskOne.java[TaskOne&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;LMS{TaskFour.java[TaskFour&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;LMS{UseMobile.java[UseMobile&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;dayTwo{StringSubStringSearch.java[StringSubStringSearch&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;loop{LoopsScalarProduct.java[LoopsScalarProduct&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;lms{SolutionStringReverseEach.java[SolutionStringReverseEach&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;lms{SolutionRepeatNumbers.java[SolutionRepeatNumbers&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;lms{SolutionSecondLargest.java[SolutionSecondLargest&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;lms{SolutionArrayEquals.java[SolutionArrayEquals&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;lms{SolutionCharacterCount.java[SolutionCharacterCount&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/src&amp;lt;javaArrayExcercises{SumOfArray.java[SumOfArray&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/src&amp;lt;javaArrayExcercises{LargestElement.java[LargestElement&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=Java/src&amp;lt;lms{SolutionRemoveDuplicate.java[SolutionRemoveDuplicate&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/src&amp;lt;javaClasses{TypesOfClasses.java[TypesOfClasses[Student&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/src&amp;lt;javaCollectionExercises{ReadOnlyCollection.java[ReadOnlyCollection&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/src&amp;lt;javaCollectionExercises{ComparatorCollections.java[ComparatorCollections&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/javaBasics&amp;lt;p2{StaticVariablesLambda.java[StaticReferenceVariableLambda&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/javaBasics&amp;lt;p1{WeightOfParanthesis.java[WeightOfParanthesis&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/src&amp;lt;javaCollectionExercises{ExerciseQueueCollections.java[CircularQueue&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/src&amp;lt;javaCollectionExercises{ExercisePriorityQueueCollections.java[ExercisePriorityQueueCollections&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=TestJava/src&amp;lt;logicStream{Number.java[Number&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=TestJava/src&amp;lt;java8Tasks{QuestionOne.java[QuestionOne&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/DSA&amp;lt;array{EasyProblems.java[EasyProblems&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=GeekForGeeks/javaBasics&amp;lt;popularProblems{StringProblems.java[StringProblems&lt;/infoNode&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="103"/>
+			<item key="DIALOG_Y_ORIGIN" value="29"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		</section>
+	</section>
+	<section name="conditionHistory">
+	</section>
+	<section name="expressionHistory">
+	</section>
+	<section name="org.eclipse.jdt.internal.debug.ui.ExpressionInformationControlCreator$ExpressionInformationControl">
+		<item key="WIDTH" value="614"/>
+		<item key="HEIGHT" value="194"/>
+		<item key="SashWeightTree" value="500"/>
+		<item key="SashWeightDetails" value="500"/>
+	</section>
+</section>

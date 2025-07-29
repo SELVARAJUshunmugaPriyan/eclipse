@@ -1,0 +1,47 @@
+package oopsTwo;
+
+class Human
+{
+	String name;
+	int age;
+	boolean isGenderMale;
+}
+
+class Teacher extends Human
+{
+	String qualification;
+	int salary;
+	float experience;
+}
+
+public class UseTeacher 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Human h = new Human();
+		
+		h.name = "Ravi";
+		h.age = 42;
+		h.isGenderMale = true;
+		
+		System.out.println(h.name + " " + h.age + " "
+				+ (h.isGenderMale ? "male" : "female"));
+		
+		Teacher t = new Teacher();
+		
+		t.name = "Suresh";
+		t.age = 36;
+		t.isGenderMale = true;
+		t.qualification = "B.E.";
+		t.salary = 18000;
+		t.experience = 1.5f;
+		
+		System.out.println(t.name + " " + t.age + " "
+				+ (t.isGenderMale ? "male" : "female")
+				+ " " + t.qualification + " " + t.salary
+				+ " " + t.experience);
+	}
+
+}

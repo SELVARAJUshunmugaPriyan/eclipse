@@ -1,0 +1,346 @@
+package mathematicalAlgorithms;
+
+import java.util.List;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.ArrayList;
+import java.math.BigInteger;
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
+import java.util.function.BiFunction;
+
+@SuppressWarnings("unused")
+public class MediumProblems {
+	
+	private static final boolean DEBUG = true;
+	
+	private static int[] multiplyIntArr(int[] arr, int x)
+	{
+		if (DEBUG) System.out.printf("In multiplyIntArr(int[]=%s,int=%d)\n",
+							Arrays.toString(arr), x);
+		
+		int carry = 0, res[] = new int[arr.length];
+		
+		for (int i = arr.length - 1; i >= 0; i--) {
+			int pdt = arr[i] * x + carry;
+			carry = pdt / 10;
+			res[i + (res.length - arr.length)] = pdt % 10;
+		}
+		
+		if (DEBUG) System.out.printf("res=%s\n", Arrays.toString(res));
+		
+		if (carry > 0) {
+			int tmp[] = new int[(int) (res.length + Math.log10(carry) + 1)];
+			
+			System.arraycopy(res, 0, tmp, (int) (Math.log10(carry) + 1), res.length);
+			
+			for (int i = tmp.length - arr.length - 1; i >= 0; i--, carry /= 10) {
+				if (DEBUG) System.out.printf("carry%%10=%d\n", carry % 10);
+				tmp[i] = carry % 10;
+			}
+			
+			if (DEBUG) System.out.printf("tmp=%s\n", Arrays.toString(tmp));
+			res = tmp;
+		}
+		return res;
+	}
+	
+	private static int[] factorialInArray(Integer n)
+	{
+		if (DEBUG) System.out.printf("In factorialInArray(Int=%d)\n", n);
+		
+		int arr[] = {1};
+		
+		for (int i = 1; i <= n; i++)
+			arr = multiplyIntArr(arr, i);
+		
+		return arr;
+	}
+
+	private static BigInteger factorialBigInt(int n)
+	{
+		if (DEBUG) System.out.printf("In factorialBigInt(int=%d)\n", n);
+		
+		BigInteger f = BigInteger.valueOf(1);
+		
+		for (int i = 1; i <= n; i++)
+			f = f.multiply(BigInteger.valueOf(i));
+		
+		return f;
+	}
+	
+	private static void factorialWithLinkedList(int n)
+	{
+		if (DEBUG) System.out.printf("In factorialWithLinkedList(int=%d)\n", n);
+		
+		DigitNode head = new DigitNode(1);
+		
+		IntStream.rangeClosed(1, n)
+				 .forEach(i -> DigitNode.multiply(head, i));
+		
+		DigitNode.print(head);
+	}
+	
+	static class DigitNode
+	{
+		int digit;
+		DigitNode next;
+		
+		DigitNode(int digit)
+		{
+			this.digit = digit;
+		}
+		
+		static void print(DigitNode head)
+		{
+			if (head == null)
+				return;
+			print(head.next);
+			System.out.print(head.digit);
+		}
+		
+		static void multiply(DigitNode head, int i)
+		{
+			DigitNode temp = head;
+			DigitNode prev = head;
+			int carry = 0;
+			
+			while (temp != null) {
+				int prod = temp.digit * i + carry;
+				temp.digit = prod % 10;
+				carry = prod / 10;
+				prev = temp;
+				temp = temp.next;
+			}
+			
+			while (carry > 0) {
+				DigitNode next = new DigitNode(carry % 10);
+				prev.next = next;
+				prev = prev.next;
+				carry /= 10;
+			}
+		}
+	}
+	
+	private static int lastNonZeroDigitInFact(int n)
+	{
+		if (DEBUG) System.out.printf("In lastNonZeroDigitInFact(int=%d)\n", n);
+		int[] D = {1, 1, 2, 6, 4, 2, 2, 4, 2, 8};
+		
+		if (n < 10)
+			return D[n];
+		
+		int scndLastDigit = (n / 10) % 10, lastDigit;
+		
+		if (scndLastDigit % 2 == 0)
+			lastDigit = 6 * lastNonZeroDigitInFact(n / 5) * lastNonZeroDigitInFact(n % 10);
+		else
+			lastDigit = 4 * lastNonZeroDigitInFact(n / 5) * lastNonZeroDigitInFact(n % 10);
+		
+		return lastDigit % 10;
+	}
+	
+	private static Integer[] sumOfPolynomials(Integer[] arrA, Integer[] arrB)
+	{
+		if (DEBUG) System.out.printf("In sumOfPolynomials(Int=%s,Int=%s)\n",
+				   Arrays.toString(arrA), Arrays.toString(arrB));
+		Integer sum[] = new Integer[Math.max(arrA.length, arrB.length)];
+		BiFunction<Integer[], Integer, Integer> 
+			getOrDefault = (arr, i) -> {
+				Integer x;
+				try {
+					x = arr[i];
+				} catch (ArrayIndexOutOfBoundsException e) {
+					x = 0;
+				}
+				return x;
+			};
+		
+		for (int i = 0; i < sum.length; i++)
+			sum[i] = getOrDefault.apply(arrA, i) + getOrDefault.apply(arrB, i);
+		
+		return sum;
+	}
+	
+	private static int[] sumOfPolynomials(int[] arrA, int[] arrB)
+	{
+		if (DEBUG) System.out.printf("In sumOfPolynomials(int=%s,int=%s)\n",
+				   Arrays.toString(arrA), Arrays.toString(arrB));
+		int sum[] = new int[Math.max(arrA.length, arrB.length)];
+		
+		for (int i = 0; i < arrA.length; i++)
+			sum[i] = arrA[i];
+		
+		for (int i = 0; i < arrB.length; i++)
+			sum[i] += arrB[i];
+		
+		if (DEBUG)
+			for (int i = sum.length - 1; i >= 0; i--)
+				if (i != 0)
+					System.out.print(sum[i] + " x^" + i + " + ");
+				else
+					System.out.println(sum[i]);
+					
+		return sum;
+	}
+	
+	private static List<Integer> sumOfPolynomials(List<Integer> lstA, List<Integer> lstB)
+	{
+		if (DEBUG) System.out.printf("In sumOfPolynomials(L<I>=%s,L<I>=%s)\n", lstA, lstB);
+		
+		BiFunction<List<Integer>, Integer, Integer>
+			getOrDefault = (lst, i) -> {
+				try {
+					return lst.get(i);
+				} catch (ArrayIndexOutOfBoundsException e) {
+					return 0;
+				}
+			};
+		
+		return IntStream.range(0, Math.max(lstA.size(), lstB.size()))
+		         		.map(i -> getOrDefault.apply(lstA, i) + getOrDefault.apply(lstB, i))
+		         		.boxed()
+		         		.collect(Collectors.toList());
+	}
+	
+	private static List<Integer> sumOfPolynomials(ArrayList<Integer> lstA,
+			ArrayList<Integer> lstB)
+	{
+		if (DEBUG) System.out.printf("In sumOfPolynomials(AL<I>=%s,AL<I>=%s)\n", lstA, lstB);
+		
+		int n = lstA.size(), m = lstB.size();
+		for (int i = 0; i < n - m; i++)
+			lstB.add(0);
+		
+		for (int i = 0; i < m - n; i++)
+			lstA.add(0);
+		
+		Iterator<Integer> itr = lstA.iterator();
+		
+		return lstB.stream()
+				   .map(x -> x + itr.next())
+				   .toList();
+	}
+	
+	private static void sumOfPolynomials(PolyNode nodeA, PolyNode nodeB)
+	{
+		if (DEBUG) { 
+			System.out.print("In sumOfPolynomials(PN=");
+			PolyNode.print(nodeA);
+			System.out.print(",PN=");
+			PolyNode.print(nodeB);
+			System.out.print(")\n");
+		}
+		
+		PolyNode res, sum = new PolyNode(0);
+		res = sum;
+		
+		while (nodeA != null && nodeB != null) {
+			if (nodeA.power == nodeB.power) {
+				sum.coeff = nodeA.coeff + nodeB.coeff;
+				sum.power = nodeA.power;
+				nodeA = nodeA.next;
+				nodeB = nodeB.next;
+			} else if (nodeA.power > nodeB.power) {
+				sum.coeff = nodeB.coeff;
+				sum.power = nodeB.power;
+				nodeB = nodeB.next;
+			} else {
+				sum.coeff = nodeA.coeff;
+				sum.power = nodeA.power;
+				nodeA = nodeA.next;
+			}
+			
+			sum.next = new PolyNode(0);
+			sum = sum.next;
+		}
+		
+		while (nodeA != null) {
+			sum.coeff = nodeA.coeff;
+			sum.power = nodeA.power;		
+			sum.next = new PolyNode(0);
+			sum = sum.next;
+			nodeA = nodeA.next;
+		}
+		
+		while (nodeB != null) {
+			sum.coeff = nodeB.coeff;
+			sum.power = nodeB.power;
+			sum.next = new PolyNode(0);
+			sum = sum.next;
+			nodeB = nodeB.next;
+		}		
+		
+		PolyNode.print(res);
+	}
+	
+	static class PolyNode
+	{
+		int coeff, power;
+		PolyNode next;
+		
+		PolyNode(int coeff)
+		{
+			this.coeff = coeff;
+			this.power = 0;
+			this.next  = null;
+		}
+		
+		PolyNode(int coeff, int power)
+		{
+			this.coeff = coeff;
+			this.power = power;
+			this.next  = null;
+		}
+		
+		static void insert(PolyNode head, PolyNode node)
+		{
+			
+			while (head.next != null) {
+				
+				if (head.power > node.power) {
+					PolyNode temp = head;
+					head = node;
+					node = head;
+				}
+				
+				head = head.next;
+			}
+
+			head.next = node;
+		}
+		
+		static void print(PolyNode node)
+		{
+			if (node == null)
+				return;
+			System.out.print(node.coeff + ( node.power != 0 ? 
+					("x^" + node.power + "+") : "" ));
+			print(node.next);
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		System.out.println(Arrays.toString(multiplyIntArr(new int[] {5, 1, 8, 9}, 100)));
+//		Arrays.stream(factorialInArray(1000000)).forEach(System.out::print);
+//		System.out.println(factorialBigInt(100));
+//		factorialWithLinkedList(100);
+//		System.out.println(lastNonZeroDigitInFact(1000000));
+//		int[] arrA = {5, 0, 10, 6}, arrB = {1, 2, 4};
+//		System.out.println(Arrays.toString(sumOfPolynomials(arrA, arrB)));
+//		ArrayList<Integer> lstA = Arrays.asList(5, 0, 10, 6).stream()
+//				.collect(Collectors.toCollection(ArrayList::new));
+//		ArrayList<Integer> lstB = Arrays.asList(1, 2, 4).stream()
+//				.collect(Collectors.toCollection(ArrayList::new));
+//		System.out.println(sumOfPolynomials(lstA, lstB));
+		PolyNode nodeA = new PolyNode(1, 1);
+		PolyNode.insert(nodeA, new PolyNode(2, 3));
+		PolyNode.insert(nodeA, new PolyNode(3));
+		PolyNode nodeB = new PolyNode(4, 2);
+		PolyNode.insert(nodeB, new PolyNode(5, 4));
+		PolyNode.insert(nodeB, new PolyNode(6, 1));
+		sumOfPolynomials(nodeA, nodeB);
+	}
+
+}

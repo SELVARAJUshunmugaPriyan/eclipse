@@ -1,0 +1,86 @@
+package oops;
+
+class Compressor
+{
+	private String brand;
+	private int capacity;
+	
+	public void setBrand(String brand)
+	{
+		this.brand = brand;
+	}
+	
+	public void setCapacity(int capacity)
+	{
+		this.capacity = capacity;
+	}
+	
+	public String getBrand()
+	{
+		return brand;
+	}
+	
+	public int getCapacity()
+	{
+		return capacity;
+	}
+}
+
+class AC
+{
+	private String color;
+	private int price;
+	private Compressor compressor;
+	
+	public void setColor(String color)
+	{
+		this.color = color;
+	}
+	
+	public void setPrice(int p)
+	{
+		price = p;
+	}
+	
+	public void setCompressor(Compressor c)
+	{
+		compressor = c;
+	}
+	
+	public String getColor()
+	{
+		return color;
+	}
+	
+	public int getPrice()
+	{
+		return price;
+	}
+	
+	public Compressor getCompressor()
+	{
+		return compressor;
+	}
+}
+
+public class UseAC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Compressor c1 = new Compressor();
+		
+		c1.setBrand("NEXO");
+		c1.setCapacity(1200);
+		
+		AC a = new AC();
+		
+		a.setColor("white");
+		a.setPrice(12000);
+		a.setCompressor(c1);
+		
+		System.out.print(a.getColor() + " " + a.getPrice()
+				+ " " + a.getCompressor().getBrand()
+				+ " " + a.getCompressor().getCapacity());
+	}
+
+}

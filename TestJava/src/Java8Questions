@@ -1,0 +1,26 @@
+What are the features of Java8?
+What is an Interface?
+Can we have implemented methods in interface? If yes how?
+Explain static keyword in interface?
+What is static block?
+What is final, finally and finalize?
+Difference between static and final keyword?
+Explain default keyword in interface?
+What is Functional interface?
+Can we put more than one abstract method in the functional interface?
+What are the types of functional interface?
+Difference between Interface and Functional Interface?
+How many ways to implement a functional interface and explain that?
+What is method reference?
+Which is more efficient methods reference or lambda expression? Explain?
+Explain Optional class?
+What is Scanner class and explain the methods?
+What is forEach()?
+What is StreamAPI?
+Write normal arithmetic operations (+, -, *, /) using Scanner class. Get the values from the user.
+Create an interface Machines. Which has static method String onOff(boolean isOn), and default method String showMachineType (String machine), and an abstract method int showProductionYear(int year);  Class Vehicles inherits Machines. It implements showProductionYear(int year) and overrides showMachineType(String machine).
+Get the Object Array from user using scanner class and if the Array is null print “given Array is null” using optional class otherwise print the given String in uppercase and find the length of String.
+Create a functional interface as Laptop add an abstract method price with one parameter, add static method with three parameter brand, color, ram and implement given methods using the method reference in use class.
+Create an interface as Bag with abstract methods noOfZips with int parameter, warranty with int parameter, price with int parameter, static method discount with tow parameters price and discount amount, create a class as Schoolbag implements Bag and implement the abstract methods and create use class print all values.
+Create a functional interface PriceCalculation which has the method int findNetPrice(int amount, int tax, int discount). Use @FunctionalInterface annotation. Implement this method using lambda expression int the Use Class. First implementation (percent) specifies that tax and discount are percentages, which finds the netPrice by finding the tax amount and discount amount. Second implementation (amount) specifies the tax and discount are tax amount and discount amount respectively, which directly finds the netPrice by adding the prices.
+Create a functional interface Employee find(List a); Create a class that has methods maxSalaryEmployee(List list), minSalaryEmployee(List list) and maxExpEmployee(List list), minExpEmployee(Listlist). Now refer all these methods to the method in functional interface using method reference in the use class.

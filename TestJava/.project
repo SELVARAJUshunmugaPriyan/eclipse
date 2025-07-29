@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>TestJava</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/java8Tasks/WhatsApp Image 2025-07-15 at 09.18.15.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/monk_/Pictures/Screenshots/WhatsApp Image 2025-07-15 at 09.18.15.jpeg</location>
+		</link>
+		<link>
+			<name>src/javaCollectionQuestion/WhatsApp Image 2025-07-04 at 09.29.39.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/monk_/Pictures/Screenshots/WhatsApp Image 2025-07-04 at 09.29.39.jpeg</location>
+		</link>
+		<link>
+			<name>src/javaCollectionQuestion/WhatsApp Image 2025-07-04 at 09.29.52.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/monk_/Pictures/Screenshots/WhatsApp Image 2025-07-04 at 09.29.52.jpeg</location>
+		</link>
+		<link>
+			<name>src/streamsAPIlogicQuestion/WhatsApp Image 2025-07-04 at 09.29.25.jpeg</name>
+			<type>1</type>
+			<location>C:/Users/monk_/Pictures/Screenshots/WhatsApp Image 2025-07-04 at 09.29.25.jpeg</location>
+		</link>
+	</linkedResources>
+</projectDescription>

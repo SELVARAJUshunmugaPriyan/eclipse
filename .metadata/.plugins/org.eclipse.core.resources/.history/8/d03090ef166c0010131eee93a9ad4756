@@ -1,0 +1,30 @@
+package popularProblems;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
+@SuppressWarnings("unused")
+public class StringProblems {
+
+	private static final boolean DEBUG = true;
+	
+	ArrayList<Integer> asciiSum(String str) 
+	{
+		return str.chars().parallel()
+						  .distinct()
+						  .filter(x -> str.indexOf(x) != str.lastIndexOf(x))
+						  .peek(x -> System.out.print(x + " "))
+						  .mapToObj(x -> str.subSequence(str.indexOf(x) + 1, str.lastIndexOf(x)))
+						  .peek(System.out::println)
+						  .map(x -> x.chars()
+								  	 .reduce((y, z) -> y + z)
+								  	 .getAsInt())
+						  .collect(Collectors.toCollection(ArrayList::new));
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(new StringProblems().asciiSum("xhnwazunnwdrkdmccz"));
+	}
+
+}

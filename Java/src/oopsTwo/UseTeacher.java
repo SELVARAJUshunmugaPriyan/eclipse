@@ -1,0 +1,113 @@
+package oopsTwo;
+
+/*
+class Human
+{
+	String name;
+	int age;
+	boolean isGenderMale;
+}
+
+class Teacher extends Human
+{
+	String qualification;
+	int salary;
+	float experience;
+}
+
+public class UseTeacher 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Human h = new Human();
+		
+		h.name = "Ravi";
+		h.age = 42;
+		h.isGenderMale = true;
+		
+		System.out.println(h.name + " " + h.age + " "
+				+ (h.isGenderMale ? "male" : "female"));
+		
+		Teacher t = new Teacher();
+		
+		t.name = "Suresh";
+		t.age = 36;
+		t.isGenderMale = true;
+		t.qualification = "B.E.";
+		t.salary = 18000;
+		t.experience = 1.5f;
+		
+		System.out.println(t.name + " " + t.age + " "
+				+ (t.isGenderMale ? "male" : "female")
+				+ " " + t.qualification + " " + t.salary
+				+ " " + t.experience);
+	}
+
+}
+*/
+
+class Human
+{
+	private String name;
+	private int age;
+	private boolean isGenderMale;
+	
+	// Constructors
+	public Human(String name, int age, boolean isGenderMale)
+	{
+		this.name = name;
+		this.age = age;
+		this.isGenderMale = isGenderMale;
+	}
+	
+	// Getters
+	public String toString()
+	{
+		return name + " " + age + " " 
+				+ (isGenderMale ? "male" : "female");
+	}
+}
+
+class Teacher extends Human
+{
+	private String qualification;
+	private int salary;
+	private float experience;
+	
+	// Constructors
+	public Teacher(String name, int age, boolean isGenderMale,
+			String qualification, int salary, float experience)
+	{
+		super(name, age, isGenderMale);
+		this.qualification = qualification;
+		this.salary = salary;
+		this.experience = experience;
+	}
+	
+	// Getters
+	public String toString()
+	{
+		return super.toString() + " " + qualification + " "
+				+ salary + " " + experience;
+	}
+}
+
+public class UseTeacher 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Human h = new Human("Ravi", 42, true);
+		
+		System.out.println(h);
+		
+		Teacher t = new Teacher("Suresh", 36, true,
+				"B.E.", 18000, 1.5f);
+		
+		System.out.println(t);
+	}
+
+}

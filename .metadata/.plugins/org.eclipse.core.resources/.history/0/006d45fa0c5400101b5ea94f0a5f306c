@@ -1,0 +1,302 @@
+package javaCollectionExercises;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.HashSet;
+import java.util.TreeSet;
+import java.util.HashMap;
+import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.stream.Collectors;
+
+//@SuppressWarnings("unused")
+public class ConvertCollections {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		new ConvertArray2ArrayList();
+//		ConvertArray2ArrayList.usingAsListFixed();
+//		ConvertArray2ArrayList.usingAsListResizable();
+//		ConvertArray2ArrayList.usingAddAll();
+//		ConvertArray2ArrayList.usingAdd();
+//		ConvertList2Set.usingTraversal();
+//		ConvertList2Set.usingConstructors();
+//		ConvertList2Set.usingAddAll();
+//		ConvertList2Set.usingStream();
+//		new ConvertArrayList2LinkedList();
+//		new ConvertArray2LinkedList();
+//		new ConvertHashMap2TreeMap();
+		ConvertHashMap2TreeMap.main(args);
+	}
+
+}
+
+// Java class to demonstrate conversion
+// of array to ArrayList
+class ConvertArray2ArrayList
+{
+	// Using stream().boxed().collect()
+	ConvertArray2ArrayList()
+	{
+		// Creating an integer array
+		int I[] = javaArrayExcercises.BubbleSort.getRandomArray(
+				  					new Scanner(System.in));
+
+		// Printing the array and its type
+		System.out.println(Arrays.toString(I) + " is of "
+				+ "type " + I.getClass());
+		
+		// Converting the array into List
+		List<Integer> al = Arrays.stream(I).boxed().collect(
+									Collectors.toList());
+
+		// Printing the List and its type
+		System.out.println(al + " is of type " + al.getClass());
+	}
+	
+	// Function to demonstrate error
+	// if we add more element(s) to
+	// a fixed-size ArrayList
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	static void usingAsListFixed()
+	{
+		String[] geeks = {"Keerthana", "Priyan"};
+		
+		// Conversion of array to ArrayList
+		// using asList()
+		List al = Arrays.asList(geeks);
+		System.out.println(al);
+		
+		try {
+			// Adding more values to the list
+			al.add("Shunmuga"); // Error
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		System.out.println(al);
+	}
+	
+	// Function to demonstrate how to add
+	// one or more element(s) to returned
+	// resizable List.
+	static void usingAsListResizable()
+	{
+		String[] geeks = {"Keerthana", "Priyan"};
+		List<String> al = new ArrayList<String>(
+										Arrays.asList(geeks));
+		
+		// Adding more elements to the list
+		al.add(1, "Shunmuga");
+		
+		System.out.println("\nArrayList after adding one "
+				+ "more element: " + al);
+	}
+	
+	// Function to demonstrate how to add
+	// all element(s) to ArrayList.
+	static void usingAddAll()
+	{
+		String[] geeks = {"Keerthana", "Priyan"};
+		List<String> al = new ArrayList<String>();
+		
+		// Adding elements of array to ArrayList
+		Collections.addAll(al, geeks);
+//		Collections.addAll(null, geeks); // Error
+//		Collections.addAll(al, null); // Error
+		
+		System.out.println(al);
+	}
+	
+	// Function to convert array to ArrayList
+	// using add() in a loop
+	static void usingAdd()
+	{
+		String[] geeks = {"Keerthana", "Priyan"};
+		List<String> al = new ArrayList<String>();
+		
+		// array to ArrayList conversion
+		for (String s : geeks)
+			al.add(s);
+		
+		System.out.println(al);
+	}
+}
+
+//Java class to demonstrate conversion
+//of List to Set
+class ConvertList2Set
+{
+	// Using simple traversal
+	static void usingTraversal()
+	{
+		// Creating a List
+		List<String> list = Arrays.asList("Hi,", "this", "is", "my",
+									   "world");
+		
+		Set<String> hSet = new HashSet<>();
+		
+		for(String s : list)
+			hSet.add(s);	
+		
+		System.out.println("Created HashSet : " + hSet);
+		
+		Set<String> tSet = new TreeSet<>();
+		
+		for(String s : list)
+			tSet.add(s);
+		
+		System.out.println("Created TreeSet : " + tSet);
+	}
+	
+	// Using Constructors
+	static void usingConstructors()
+	{
+		// Creating a List
+		List<String> list = Arrays.asList("Hi,", "this", "is", "my",
+									   "world");
+		
+		Set<String> hSet = new HashSet<>(list);		
+		System.out.println("Created HashSet : " + hSet);
+		
+		Set<String> tSet = new TreeSet<>(list);
+		System.out.println("Created TreeSet : " + tSet);
+	}
+	
+	// Using AddAll
+	static void usingAddAll()
+	{
+		// Creating a List
+		List<String> list = Arrays.asList("Hi,", "this", "is", "my",
+									   "world");
+		
+		Set<String> hSet = new HashSet<>(list);
+		hSet.addAll(list);
+		System.out.println("Created HashSet : " + hSet);
+		
+		Set<String> tSet = new TreeSet<>(list);
+		tSet.addAll(list);
+		System.out.println("Created TreeSet : " + tSet);
+	}
+	
+	// Using stream
+	static void usingStream()
+	{
+		// Creating a List
+		List<String> list = Arrays.asList("Hi,", "this", "is", "my",
+									   "world");
+		
+		Set<String> set = list.stream().collect(
+										 Collectors.toSet());
+		System.out.println("Created HashSet : " + set);
+	}
+}
+
+class ConvertArrayList2LinkedList
+{
+	ConvertArrayList2LinkedList()
+	{
+		ArrayList<Integer> al = new ArrayList<>(
+				Arrays.asList(1, 2, 3));
+		
+		// Using Traversal
+//		LinkedList<Integer> ll = new LinkedList<>();
+//		for(int i : al)
+//			ll.add(i);
+		
+		// using Constructor
+//		LinkedList<Integer> ll = new LinkedList<>(al);
+		
+		// using stream API
+//		LinkedList<Integer> ll = al
+//	            .stream() // Convert the ArrayList into Stream
+//	            .collect(Collectors // Collect the LinkedList 
+//	            .toCollection(LinkedList::new)); // Convert the Stream into
+//												 //  LinkedList Collection type
+		
+		// using addAll
+//		LinkedList<Integer> ll = new LinkedList<>();
+//		ll.addAll(al);
+		
+		// between incompatible types
+		LinkedList<Float> ll = al
+	            .stream() // Convert the ArrayList into Stream
+	            .map(Float::valueOf) // Convert the Stream into String
+	            					  // Desired casting function can be passed
+	            					  // as parameter in next step
+	            .collect(Collectors // Collect the LinkedList
+	            .toCollection(LinkedList::new)); // Convert the Stream into LinkedList
+        										 // Collection type
+
+		
+		System.out.println(ll);
+	}
+}
+
+class ConvertArray2LinkedList
+{
+	ConvertArray2LinkedList()
+	{
+		Integer[] array = {1, 2, 3, 4};
+		
+//		// using Constructor
+//		List<Integer> list = Arrays.asList(array);
+//		List<Integer> linkedList = new LinkedList<>(list);
+		
+		// using addAll
+		LinkedList<Integer> linkedList = new LinkedList<>();
+		Collections.addAll(linkedList, array);
+		
+		System.out.println(linkedList);
+	}
+}
+
+class ConvertHashMap2TreeMap
+{
+	ConvertHashMap2TreeMap()
+	{
+		Map<Integer, Integer> hMap = new HashMap<>();
+		Map<Integer, Integer> tMap = new TreeMap<>();
+		
+		hMap.put(0, 1);
+		hMap.put(1, 2);
+		hMap.put(2, 3);
+		hMap.put(3, 4);
+		
+		// Using addAll
+//		tMap.putAll(hMap);
+		
+		// Bulk copying using forEach
+		hMap.forEach((k, v) -> tMap.put(k, v));
+		
+		System.out.println("Tree map : " + tMap);
+	}
+	
+//	@SuppressWarnings("rawtypes")
+	static <K, V> Map<K, V> convertUsingPutAll(
+			Map<K, V> hMap)
+	{
+		Map<K, V> tMap = new TreeMap<>();
+		tMap.putAll(hMap);
+		return tMap;
+	}
+	
+	public static void main(String[] args)
+	{
+		Map<Integer, Integer> hMap = new HashMap<>();
+		
+		hMap.put(0, 1);
+		hMap.put(1, 2);
+		hMap.put(2, 3);
+		hMap.put(3, 4);
+		
+		Map<Integer, Integer> tMap = convertUsingPutAll(hMap);
+		
+		System.out.println(tMap);
+	}
+}

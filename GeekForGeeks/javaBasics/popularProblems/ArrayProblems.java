@@ -169,6 +169,7 @@ public class ArrayProblems {
 //			arr[i++] = tmp;
 //		System.out.println(majorityElement(arr));
 		System.out.println(mergeCount(new int[] {24, 18, 38, 43, 14, 40, 1, 54}, 0, 7));
+		//Dummy verification
 	}
 
 }

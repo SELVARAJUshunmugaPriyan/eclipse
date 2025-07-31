@@ -31,4 +31,5 @@ public class UserServiceTest {
 		for (int i = 0; i < 10; i++)
 			assertEquals(values[i], userService.getUserName(i));
 	}
+	
 }

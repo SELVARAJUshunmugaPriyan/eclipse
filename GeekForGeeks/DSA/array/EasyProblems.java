@@ -1,3 +1,5 @@
+// NOTE To enable assert use '-ea' in run config > arguments > VM arguments
+
 package array;
 
 import java.util.Map;
@@ -563,8 +565,12 @@ public class EasyProblems extends EasyProblemsSuper
 		return new int[] {};
 	}
 	
+	@Override
 	int[] sortedSubsequenceOf3(int arr[], int twoMinimum)
-	{			
+	{	
+		if (twoMinimum == 1)
+			return super.sortedSubsequenceOf3(arr, twoMinimum);
+			
 		if (DEBUG) System.out.printf("In sortedSubsequenceOf3(int[]=%s,2min)\n",
 				Arrays.toString(arr));
 		
@@ -588,8 +594,30 @@ public class EasyProblems extends EasyProblemsSuper
 		return new int[] {};
 	}
 	
+	int maxSubarraySum(int[] arr, double nestedFor)
+	{
+		if (DEBUG) System.out.printf("In maxSubarraySum(int[]=%s,nst4)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length != 0) {
+			for (int i = 0, res = Integer.MIN_VALUE; i < arr.length; i++) {
+				for (int j = i, sum = 0; j < arr.length; j++) {
+					sum += arr[j];
+					if (sum > res)
+						res = sum;
+				}
+				
+				if (i == arr.length - 1)
+					return res;
+			}
+		}
+		
+		return -1;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		// NOTE To enable assert use '-ea' in run config > arguments > VM arguments
 		try (Scanner scn = new Scanner(System.in)) {
 //			System.out.println(duplicatedWithinKdist(new int[] {1, 2, 3, -1, 4, 5, 6, 4}, 3f));
 //			System.out.println(Arrays.toString(new EasyProblems().setEvenPosGrtr(
@@ -603,7 +631,8 @@ public class EasyProblems extends EasyProblemsSuper
 //			missingNumberTest();
 //			missingNRepeatingNumberTest();
 //			singleRepeatTest();
-			sortedSubsequenceOf3Test();
+//			sortedSubsequenceOf3Test();
+			maxSubarraySumTest();
 		} catch (NumberFormatException | java.util.NoSuchElementException e) {
 			System.err.println(e);
 		}
@@ -681,7 +710,7 @@ public class EasyProblems extends EasyProblemsSuper
 	{
 //		double opt = 0;
 //		float opt = 0;
-		int opt = 0;
+		int opt = 1;
 		int[] res = new EasyProblems().sortedSubsequenceOf3(new int[] {12, 11, 10, 5, 6, 2, 30},
 															opt);
 		assert Arrays.equals(res, new int[] {5, 6, 30}) : "Application Logic Error";
@@ -710,6 +739,30 @@ public class EasyProblems extends EasyProblemsSuper
 		res = new EasyProblems().sortedSubsequenceOf3(new int[] {4, 3, 2, 1, 2, 2}, opt);
 		assert Arrays.equals(res, new int[0]) : "Application Logic Error";
 		System.out.println(Arrays.toString(res));
+	}
+	
+	private static void maxSubarraySumTest()
+	{
+		double opt = 0;
+//		int opt = 0;
+		int res = new EasyProblems().maxSubarraySum(new int[] {2, 3, -8, 7, -1, 2, 3}, opt);
+		assert res == 11 : "Application logic error";
+		System.out.println(res);
+		res = new EasyProblems().maxSubarraySum(new int[] {-2, -4}, opt);
+		assert res == -2: "Application logic error";
+		System.out.println(res);
+		res = new EasyProblems().maxSubarraySum(new int[] {5, 4, 1, 7, 8}, opt);
+		assert res == 25 : "Application logic error";
+		System.out.println(res);
+		res = new EasyProblems().maxSubarraySum(new int[] {5}, opt);
+		assert res == 5 : "Application logic error";
+		System.out.println(res);
+		res = new EasyProblems().maxSubarraySum(new int[] {}, opt);
+		assert res == -1 : "Application logic error";
+		System.out.println(res);
+		res = new EasyProblems().maxSubarraySum(new int[] {5, 5, 5, 5, 5}, opt);
+		assert res == 25 : "Application logic error";
+		System.out.println(res);
 	}
 }
 
@@ -868,6 +921,35 @@ class EasyProblemsSuper
 			for (int i = 0; i < n; i++)
 				if (left[i] != -1 && right[i] != -1)
 					return new int[] {arr[left[i]], arr[i], arr[right[i]]};
+		}
+		
+		return new int[] {};
+	}
+	
+	int[] sortedSubsequenceOf3(int arr[], int twoMinimum)
+	{			
+		if (twoMinimum == 1) System.out.printf("In sortedSubsequenceOf3(int[]=%s,2min)\n",
+				Arrays.toString(arr));
+		
+		int n = arr.length;
+		
+		if (n > 2) {
+			int minNum = arr[0], seq = 1, maxSeq = Integer.MIN_VALUE, storeMin = minNum;
+			
+			for (int i : arr)
+				if (i == minNum)
+					continue;
+				else if (i < minNum)
+					minNum = i;
+				else if (i < maxSeq) {
+					maxSeq = i;
+					storeMin = minNum;
+				} else if (i > maxSeq) {
+					seq++;
+					if (seq == 3)
+						return new int[] {storeMin, minNum, i};
+					maxSeq = i;
+				}
 		}
 		
 		return new int[] {};

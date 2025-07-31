@@ -144,7 +144,36 @@ public class ArrayProblems {
             
         return res;
     }
-
+    
+    static int powerfulInteger(int intervals[][], int k)
+    {
+    	java.util.TreeMap<Integer, Integer> map = new java.util.TreeMap<>();
+    	
+    	for (int[] arr : intervals) {
+    		map.put(arr[0], map.getOrDefault(arr[0], 0) + 1);
+    		map.put(arr[1] + 1, map.getOrDefault(arr[1] + 1, 0) - 1);
+    	}
+    	
+    	int ans = -1, temp = 0;
+    	
+    	for (java.util.Map.Entry<Integer, Integer> entry : map.entrySet()) {
+    		int point = entry.getKey();
+    		int delta = entry.getValue();
+    		
+    		if (delta >= 0) {
+    			temp += delta;
+    			if (temp >= k)
+    				ans = point;
+    		} else {
+    			if (temp >= k)
+    				ans = point - 1;
+    			temp += delta;
+    		}
+    	}
+    	
+    	return ans;
+    }
+    
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 //		System.out.println(secondMax(new int[] {10, 10, 5, 10}));
@@ -168,7 +197,7 @@ public class ArrayProblems {
 //		for (int tmp : list)
 //			arr[i++] = tmp;
 //		System.out.println(majorityElement(arr));
-		System.out.println(mergeCount(new int[] {24, 18, 38, 43, 14, 40, 1, 54}, 0, 7));
+//		System.out.println(mergeCount(new int[] {24, 18, 38, 43, 14, 40, 1, 54}, 0, 7));
+		System.out.println(powerfulInteger(new int[][] {{1, 3}, {3, 4}, {3, 6}}, 2));
 	}
-
 }

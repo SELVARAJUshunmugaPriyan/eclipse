@@ -615,6 +615,179 @@ public class EasyProblems extends EasyProblemsSuper
 		return -1;
 	}
 	
+	int maxSubarraySum(int[] arr, int prefixSum)
+	{
+		if (DEBUG) System.out.printf("In maxSubarraySum(int[]=%s,prf+)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length != 0) {
+			int sum = arr[0], res = sum;
+			
+			for (int i = 1; i < arr.length; i++) {
+				sum = Math.max(sum + arr[i], arr[i]);
+				res = Math.max(sum, res);
+			}
+
+			return res;
+		}
+		
+		return -1;
+	}
+	
+	int equilibriumIndex(int[] arr, double nestedFor)
+	{
+		if (DEBUG) System.out.printf("In equilibriumIndex(int[]=%s,nst4)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			
+			for (int i = 1; i < arr.length - 1; i++) {
+				int prf = 0, suf = 0;
+				for (int j = 0; j < i; j++)
+					prf += arr[j];
+				
+				for (int j = i + 1; j < arr.length; j++)
+					suf += arr[j];
+				
+				if (prf == suf)
+					return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	int equilibriumIndex(int[] arr, float sumArray)
+	{
+		if (DEBUG) System.out.printf("In equilibriumIndex(int[]=%s,sum[])\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			int[] pref = new int[arr.length], suff = new int[arr.length];
+			pref[0] = arr[0];
+			suff[arr.length - 1] = arr[arr.length - 1];
+			
+			for (int i = 1; i < arr.length; i++)
+				pref[i] = pref[i - 1] + arr[i];
+			
+			for (int i = arr.length - 2; i >= 0; i--)
+				suff[i] = suff[i + 1] + arr[i];
+			
+			for (int i = 0; i < arr.length; i++)
+				if (pref[i] == suff[i])
+					return i;
+		}
+		
+		return -1;
+	}
+	
+	int equilibriumIndex(int[] arr, int prefixSumSuffixSum)
+	{
+		if (DEBUG) System.out.printf("In equilibriumIndex(int[]=%s,pFsF)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			int total = Arrays.stream(arr).boxed().collect(Collectors.summingInt(x -> x));
+			int prefx = 0, suffx = 0;					
+			
+			for (int i = 0; i < arr.length; i++) {
+				suffx = total - arr[i] - prefx;
+				if (suffx == prefx)
+					return i;
+				prefx += arr[i];
+			}
+		}
+		
+		return -1;
+	}
+	
+	boolean pairWithGivenSum(int[] arr, int k, double generatingAllPossibilites)
+	{
+		if (DEBUG && arr.length < 10) System.out.printf("In pairWithGivenSum(int[]=%s,"
+				+ "k=%d,gen!)\n", Arrays.toString(arr), k);
+		
+		if (arr.length > 1 && generatingAllPossibilites == 0) {
+			for (int i = 0; i < arr.length - 1; i++)
+				for (int j = i + 1; j < arr.length; j++)
+					if (arr[i] + arr[j] == k)
+						return true;
+		}
+		
+		if (generatingAllPossibilites != 0)
+			return generatingAllPossibilites == 1;
+		
+		return false;
+	}
+	
+	boolean pairWithGivenSum(int[] arr, int k, float sortAndBinSearch)
+	{
+		if (DEBUG && arr.length < 10) System.out.printf("In pairWithGivenSum(int[]=%s,"
+				+ "k=%d,↑bScr)\n", Arrays.toString(arr), k);
+		
+		if (arr.length > 1) {
+			Arrays.sort(arr);
+			
+			for (int i = 0; i < arr.length; i++) {
+				int compliment = k - arr[i];
+				int low = i + 1, high = arr.length - 1;
+				
+				while (low <= high) {
+					int mid = low + (high - low) / 2;
+					
+					if (arr[mid] == compliment)
+						return true;
+					if (arr[mid] > compliment)
+						high = mid - 1;
+					else
+						low = mid + 1;
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	boolean pairWithGivenSum(int[] arr, int k, short sortAnd2Pointer)
+	{
+		if (DEBUG && arr.length < 10) System.out.printf("In pairWithGivenSum(int[]=%s,"
+				+ "k=%d,↑2*)\n", Arrays.toString(arr), k);
+		
+		if (arr.length > 1) {
+			Arrays.sort(arr);
+			
+			int left = 0, right = arr.length - 1;
+			
+			while (left < right) {
+				if (arr[left] + arr[right] == k)
+					return true;
+				if (arr[left] + arr[right] > k)
+					right--;
+				else
+					left++;
+			}
+		}
+		
+		return false;
+	}
+	
+	boolean pairWithGivenSum(int[] arr, int k, int hashSet)
+	{
+		if (DEBUG && arr.length < 10) System.out.printf("In pairWithGivenSum(int[]=%s,"
+				+ "k=%d,↑2*)\n", Arrays.toString(arr), k);
+		
+		if (arr.length > 1) {
+			Set<Integer> set = new HashSet<>();
+			
+			for (int i : arr) {
+				if (set.contains(k - i))
+					return true;
+				set.add(i);
+			}
+		}
+		
+		return false;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// NOTE To enable assert use '-ea' in run config > arguments > VM arguments
@@ -632,7 +805,9 @@ public class EasyProblems extends EasyProblemsSuper
 //			missingNRepeatingNumberTest();
 //			singleRepeatTest();
 //			sortedSubsequenceOf3Test();
-			maxSubarraySumTest();
+//			maxSubarraySumTest();
+//			equilibriumIndexTest();
+			pairWithGivenSumTest();
 		} catch (NumberFormatException | java.util.NoSuchElementException e) {
 			System.err.println(e);
 		}
@@ -743,8 +918,8 @@ public class EasyProblems extends EasyProblemsSuper
 	
 	private static void maxSubarraySumTest()
 	{
-		double opt = 0;
-//		int opt = 0;
+//		double opt = 0;
+		int opt = 0;
 		int res = new EasyProblems().maxSubarraySum(new int[] {2, 3, -8, 7, -1, 2, 3}, opt);
 		assert res == 11 : "Application logic error";
 		System.out.println(res);
@@ -763,6 +938,133 @@ public class EasyProblems extends EasyProblemsSuper
 		res = new EasyProblems().maxSubarraySum(new int[] {5, 5, 5, 5, 5}, opt);
 		assert res == 25 : "Application logic error";
 		System.out.println(res);
+	}
+	
+	private static void equilibriumIndexTest()
+	{
+//		double opt = 0;
+		float opt = 0;
+//		int opt = 0;
+		int res = new EasyProblems().equilibriumIndex(new int[] {1, 2, 0, 3}, opt);
+		assert res == 2 : "Failed equilibriumIndex(1, 2, 0, 3) exp: 2 but res=" + res;
+		System.out.println(res);
+		res = new EasyProblems().equilibriumIndex(new int[] {1, 1, 1, 1}, opt);
+		assert res == -1 : "Failed for equilibriumIndex(1, 1, 1, 1) exp: -1 res=" + res;
+		System.out.println(res);
+		res = new EasyProblems().equilibriumIndex(new int[] {-7, 1, 5, 2, -4, 3, 0}, opt);
+		assert res == 3 : "Failed for equilibriumIndex(-7, 1, 5, 2, -4, 3, 0) exp: 3 res=" + res;
+		System.out.println(res);
+		res = new EasyProblems().equilibriumIndex(new int[] {2, 2}, opt);
+		assert res == -1 : "Failed for equilibriumIndex(2, 2) exp: -1 res=" + res;
+		System.out.println(res);
+		res = new EasyProblems().equilibriumIndex(new int[] {1}, opt);
+		assert res == -1 : "Failed for equilibriumIndex(1) exp: -1 res=" + res;
+		System.out.println(res);
+		res = new EasyProblems().equilibriumIndex(new int[] {}, opt);
+		assert res == -1 : "Failed for equilibriumIndex({}) exp: -1 res=" + res;
+		System.out.println(res);
+		res = new EasyProblems().equilibriumIndex(new int[] {0, 1, -1}, opt);
+		assert res == 0 : "Failed for equilibriumIndex({}) exp: 0 res=" + res;
+		System.out.println(res);
+	}
+	
+	private static void pairWithGivenSumTest()
+	{
+//		double opt = 0;
+//		float opt = 0;
+		int opt = 0;
+//		short opt = 0;
+		
+        boolean res = new EasyProblems().pairWithGivenSum(new int[]{0, -1, 2, -3, 1}, -2, opt);
+        assert res : "Test-1: Failed for pairWithGivenSum({0, -1, 2, -3, 1}, -2) exp=true but res=" + res;
+        System.out.println(res);
+        
+        res = new EasyProblems().pairWithGivenSum(new int[]{1, -2, 1, 0, 5}, 0, opt);
+        assert !res : "Test-1: Failed for pairWithGivenSum({0, -1, 2, -3, 1}, -2) exp=false but res=" + res;
+        System.out.println(res);
+        
+		// Test 1: Empty array — no pairs
+        res = new EasyProblems().pairWithGivenSum(new int[]{}, 10, opt);
+        assert !res : "Test-1: Failed for pairWithGivenSum({}, 10) exp=false but res=" + res;
+        System.out.println(res);
+
+        // Test 2: Single element — can't form a pair
+        res = new EasyProblems().pairWithGivenSum(new int[]{5}, 10, opt);
+        assert !res : "Test-2: Failed for pairWithGivenSum({5}, 10) exp=false but res=" + res;
+        System.out.println(res);
+
+        // Test 3: Two elements that sum to target
+        res = new EasyProblems().pairWithGivenSum(new int[]{4, 6}, 10, opt);
+        assert res : "Test-3: Failed for pairWithGivenSum({4, 6}, 10) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 4: Two elements, no valid pair
+        res = new EasyProblems().pairWithGivenSum(new int[]{1, 2}, 10, opt);
+        assert !res : "Test-4: Failed for pairWithGivenSum({1, 2}, 10) exp=false but res=" + res;
+        System.out.println(res);
+
+        // Test 5: All identical elements, valid pair
+        int[] arr5 = new int[100000];
+        for (int i = 0; i < arr5.length; i++) arr5[i] = 5;
+        res = new EasyProblems().pairWithGivenSum(arr5, 10, opt);
+        assert res : "Test-5: Failed for pairWithGivenSum({5,...}, 10) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 6: All identical elements, no valid pair
+        int[] arr6 = new int[100000];
+        for (int i = 0; i < arr6.length; i++) arr6[i] = 3;
+        res = new EasyProblems().pairWithGivenSum(arr6, 10, opt);
+        assert !res : "Test-6: Failed for pairWithGivenSum({3,...}, 10) exp=false but res=" + res;
+        System.out.println(res);
+
+        // Test 7: Very large array with valid pair at ends
+        int[] arr7 = new int[1000000];
+        for (int i = 0; i < 499999; i++) arr7[i] = 1;
+        arr7[499999] = 2;
+        for (int i = 500000; i < 1000000; i++) arr7[i] = 999999;
+        res = new EasyProblems().pairWithGivenSum(arr7, 1000001, opt);
+        assert res : "Test-7: Failed for pairWithGivenSum({...}, 1000001) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 8: Large array, no two elements sum to target
+        int[] arr8 = new int[1000000];
+        for (int i = 0; i < 1000000; i++) arr8[i] = i + 1;
+        res = new EasyProblems().pairWithGivenSum(arr8, 200002, opt);
+        assert res : "Test-8: Failed for pairWithGivenSum({1,2,...}, 200002) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 9: Negative and positive values sum to 0
+        res = new EasyProblems().pairWithGivenSum(new int[]{-1000000, 1000000, 5, 3}, 0, opt);
+        assert res : "Test-9: Failed for pairWithGivenSum({-1000000, 1000000, 5, 3}, 0) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 10: Integer overflow boundaries (32-bit)
+        res = new EasyProblems().pairWithGivenSum(new int[]{2147483637, 10, -10}, 2147483647, opt);
+        assert res : "Test-10: Failed for pairWithGivenSum({2147483640, 10, -10}, 2147483647) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 11: Duplicates allowed in solution
+        res = new EasyProblems().pairWithGivenSum(new int[]{5, 5, 3}, 10, opt);
+        assert res : "Test-11: Failed for pairWithGivenSum({5, 5, 3}, 10) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 12: Zeroes in the array
+        res = new EasyProblems().pairWithGivenSum(new int[]{0, 0, 1}, 0, opt);
+        assert res : "Test-12: Failed for pairWithGivenSum({0, 0, 1}, 0) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 13: Negative sum
+        res = new EasyProblems().pairWithGivenSum(new int[]{-3, -7, 10}, -10, opt);
+        assert res : "Test-13: Failed for pairWithGivenSum({-3, -7, 10}, -10) exp=true but res=" + res;
+        System.out.println(res);
+
+        // Test 14: 1M elements with no valid pair (just for performance)
+        int[] arr14 = new int[1000000];
+        for (int i = 0; i < 1000000; i++) arr14[i] = i * 2;
+        res = new EasyProblems().pairWithGivenSum(arr14, 1999999, opt);
+        assert !res : "Test-14: Failed for pairWithGivenSum({0,2,4,...}, 1999999) exp=false but res=" + res;
+        System.out.println(res);
+
 	}
 }
 

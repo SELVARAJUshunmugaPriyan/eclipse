@@ -11,6 +11,14 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.function.Function;
+import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeoutException;
+import java.util.concurrent.ExecutionException;
+
+import static java.util.concurrent.Executors.newSingleThreadExecutor;
 
 import javaArrayExcercises.BubbleSort;
 
@@ -788,6 +796,178 @@ public class EasyProblems extends EasyProblemsSuper
 		return false;
 	}
 	
+	int twoSumClosestPair2Zero(int[] arr, double genAllPairs)
+	{
+		if (DEBUG && arr.length < 10) System.out.printf("In twoSumClosestPair2Zero(int[]=%s,"
+				+ "Gen!)\n", Arrays.toString(arr));
+		
+		int sum = Integer.MAX_VALUE;
+		
+		for (int i = 0; i < arr.length - 1; i++)
+			for (int j = i + 1; j < arr.length; j++)
+				if (Math.abs(arr[i] + arr[j]) < Math.abs(sum))
+					sum = arr[i] + arr[j];
+				else if (Math.abs(arr[i] + arr[j]) == Math.abs(sum))
+					sum = arr[i] + arr[j] > 0 ? arr[i] + arr[j] : sum ;
+		return sum;
+	}
+	
+	int twoSumClosestPair2Zero(int[] arr, float sortBinSrch)
+	{
+		if (DEBUG && arr.length < 10) System.out.printf("In twoSumClosestPair2Zero(int[]=%s,"
+				+ "↑bSrch)\n", Arrays.toString(arr));
+		
+		int sum = Integer.MAX_VALUE;
+		
+		Arrays.sort(arr);
+		
+		for (int i = 0; i < arr.length - 1; i++) {
+			int low = i + 1, high = arr.length - 1;
+			while (low <= high) {
+				int mid = (low + high) / 2;
+				if (arr[i] + arr[mid] == 0)
+					return 0;
+				else if (arr[i] + arr[mid] > 0)
+					high = mid - 1;
+				else
+					low = mid + 1;
+				
+				if (Math.abs(arr[i] + arr[mid]) < Math.abs(sum))
+					sum = arr[i] + arr[mid];
+				else if (Math.abs(arr[i] + arr[mid]) == Math.abs(sum))
+					sum = Math.max(arr[i] + arr[mid], sum);
+			}
+		}
+			
+		return sum;
+	}
+	
+	int twoSumClosestPair2Zero(int[] arr, int sortBinSrch)
+	{
+		if (DEBUG && arr.length < 10) System.out.printf("In twoSumClosestPair2Zero(int[]=%s,"
+				+ "↑2*)\n", Arrays.toString(arr));
+		
+		int sum = Integer.MAX_VALUE;
+		
+		Arrays.sort(arr);
+		
+		int left = 0, right = arr.length - 1;
+		while (left < right) {			
+			if (Math.abs(arr[left] + arr[right]) < Math.abs(sum))
+				sum = arr[left] + arr[right];
+			else if (Math.abs(arr[left] + arr[right]) == Math.abs(sum))
+				sum = Math.max(arr[left] + arr[right], sum);
+			
+			if (arr[left] + arr[right] == 0)
+				return 0;
+			else if (arr[left] + arr[right] > 0)
+				right--;
+			else
+				left++;
+		}
+			
+		return sum;
+	}
+	
+	@Override
+	int[] divideArrayInto3Parts(int[] arr, double genAllPos)
+	{
+		if (genAllPos != 0)
+			return super.divideArrayInto3Parts(arr, genAllPos);
+			
+		if (DEBUG && arr.length < 11) System.out.printf("In divideArrayInto3Parts(int[]=%s"
+				+ ",gen!)\n", Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			outerloop:
+			for (int i = 0; i < arr.length - 2; i++)
+				for (int j = i + 1; j < arr.length - 1; j++)
+					for (int k = j + 1; k < arr.length; k++) {
+						if (Thread.interrupted())
+							break outerloop;
+						int sum1 = 0, sum2 = 0, sum3 = 0;
+						for (int l = 0; l <= i; l++)
+							sum1 += arr[l];
+						for (int l = j; l <= k; l++)
+							sum2 += arr[l];
+						for (int l = k; l < arr.length; l++)
+							sum3 += arr[l];
+						if (sum1 == sum2 && sum1 == sum3)
+							return new int[] {i, j};
+					}
+		}
+		
+		return new int[] {-1, -1};
+	}
+	
+	int[] divideArrayInto3Parts(int[] arr, int runningSum)
+	{
+		if (DEBUG && arr.length < 11) System.out.printf("In divideArrayInto3Parts(int[]=%s"
+				+ ",+→)\n", Arrays.toString(arr));
+		
+		int total, sum = 0;
+		if (arr.length > 2 && (total = Arrays.stream(arr).sum()) % 3 == 0) {
+			for (int i = 0, res[] = {-1, -1}, j = 0; i < arr.length; i++) {
+				if (Thread.interrupted())
+					break;
+				sum += arr[i];
+				if (sum == total / 3) {
+					res[j++] = i;
+					if (j == 2 && i != arr.length - 1)
+						return res;
+					sum = 0;
+				}
+			}
+		}
+		
+		return new int[] {-1, -1};
+	}
+	
+	Integer maxOnes(int[] arr, int key, double genAll)
+	{
+		if (DEBUG && arr.length < 11) System.out.printf("In maxOnes(int[]=%s,int=%d"
+				+ ",gen!)\n", Arrays.toString(arr), key);
+		
+		int res = 0;
+		
+		for (int i = 0; i < arr.length; i++) {
+			int count = 0;
+			for (int j = i; j < arr.length; j++) {
+				if (Thread.interrupted())
+					return null;
+				else if (arr[j] == 0)
+					count++;
+				if (count <= key)
+					res = Math.max(res, j - (i - 1));
+			}
+		}
+		
+		return arr.length == 0 ? 0 : res ;
+	}
+	
+	Integer maxOnes(int[] arr, int key, int slidingWindow)
+	{
+		if (DEBUG && arr.length < 11) System.out.printf("In maxOnes(int[]=%s,int=%d"
+				+ ",▯⟶)\n", Arrays.toString(arr), key);
+		
+		int res = 0, start = 0, end = 0, n = arr.length, count = 0;
+		
+		while (end < n) {
+			if (arr[end] == 0)
+				count++;
+			while (count > key) {
+				if (arr[start] == 0)
+					count--;
+				start++;
+			}
+			res = Math.max(res, end - (start - 1));
+			end++;
+		}
+		
+		return arr.length == 0 ? 0 : res ;
+	}
+	
+	// Driver code
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// NOTE To enable assert use '-ea' in run config > arguments > VM arguments
@@ -807,10 +987,62 @@ public class EasyProblems extends EasyProblemsSuper
 //			sortedSubsequenceOf3Test();
 //			maxSubarraySumTest();
 //			equilibriumIndexTest();
-			pairWithGivenSumTest();
+//			pairWithGivenSumTest();
+//			twoSumClosestPair2ZeoTest();
+//			divideArrayInto3PartsTest();
+			maxOnesTest();
 		} catch (NumberFormatException | java.util.NoSuchElementException e) {
 			System.err.println(e);
 		}
+	}
+	
+	// Utility Function
+	private static <T, U, V> V task(BiFunctionLocale<T, U, V> func, T t, U u)
+	{
+		ExecutorService executor = newSingleThreadExecutor();
+		
+		Callable<V> task = () -> {
+			return func.bifunc(t, u);
+		}; 
+		
+		Future<V> future = executor.submit(task);
+		
+		try {
+			return future.get(10, TimeUnit.SECONDS);
+		} catch (TimeoutException e) {
+			System.out.println(e);
+			future.cancel(true);
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		} finally {
+			executor.shutdown();
+		}
+		
+		return null;
+	}
+	
+	private static <T, U, V, W> W task(TriFunctionLocale<T, U, V, W> func, T t, U u, V v)
+	{
+		ExecutorService executor = newSingleThreadExecutor();
+		
+		Callable<W> task = () -> {
+			return func.trifunc(t, u, v);
+		};
+		
+		Future<W> future = executor.submit(task);
+		
+		try {
+			return future.get(10, TimeUnit.SECONDS);
+		} catch (TimeoutException e) {
+			System.out.println(e);
+			future.cancel(true);
+		} catch (InterruptedException | ExecutionException e) {
+			e.printStackTrace();			
+		} finally {
+			executor.shutdown();
+		}
+		
+		return null;
 	}
 	
 	private static void missingNumberTest()
@@ -1066,6 +1298,180 @@ public class EasyProblems extends EasyProblemsSuper
         System.out.println(res);
 
 	}
+	
+	private static void twoSumClosestPair2ZeoTest()
+	{
+//		double opt = 0;
+//		float opt = 0;
+		int opt = 0;
+		
+        // Test-1: Basic test case
+        int res = new EasyProblems().twoSumClosestPair2Zero(new int[]{-8, 5, 2, -6}, opt);
+        assert res == -1 : "Test-1: Failed for twoSumClosestPair2Zero(-8,5,2,-6) exp=-1 but res=" + res;
+        System.out.println(res);
+
+        // Test-2: Closest positive and negative pair
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{1, 60, -10, 70, -80, 85}, opt);
+        assert res == 5 : "Test-2: Failed for twoSumClosestPair2Zero(1,60,-10,70,-80,85) exp=5 but res=" + res;
+        System.out.println(res);
+
+        // Test-3: All negative numbers
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{-5, -3, -1, -7}, opt);
+        assert res == -4 : "Test-3: Failed for twoSumClosestPair2Zero(-5,-3,-1,-7) exp=-4 but res=" + res;
+        System.out.println(res);
+
+        // Test-4: All positive numbers
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{2, 3, 6, 8}, opt);
+        assert res == 5 : "Test-4: Failed for twoSumClosestPair2Zero(2,3,6,8) exp=5 but res=" + res;
+        System.out.println(res);
+
+        // Test-5: Multiple closest-to-zero sums (check maximum sum among them)
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{-3, 1, 2, -2}, opt);
+        assert res == 0 : "Test-5: Failed for twoSumClosestPair2Zero(-3,1,2,-2) exp=0 but res=" + res;
+        System.out.println(res);
+
+        // Test-6: Includes zero
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{-1, 0, 1}, opt);
+        assert res == 0 : "Test-6: Failed for twoSumClosestPair2Zero(-1,0,1) exp=0 but res=" + res;
+        System.out.println(res);
+
+        // Test-7: Exactly zero sum (like -2, 2)
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{-2, 4, 2, -4}, opt);
+        assert res == 0 : "Test-7: Failed for twoSumClosestPair2Zero(-2,4,2,-4) exp=0 but res=" + res;
+        System.out.println(res);
+
+        // Test-8: Large numbers
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{Integer.MAX_VALUE, -1, -Integer.MAX_VALUE + 1}, opt);
+        assert res == 1 : "Test-8: Failed for twoSumClosestPair2Zero(MAX,-1,MIN+1) exp=1 but res=" + res;
+        System.out.println(res);
+
+        // Test-9: Very close values
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{-1000000, 999999}, opt);
+        assert res == -1 : "Test-9: Failed for twoSumClosestPair2Zero(-1000000,999999) exp=-1 but res=" + res;
+        System.out.println(res);
+
+        // Test-10: Only two elements
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{-10, 9}, opt);
+        assert res == -1 : "Test-10: Failed for twoSumClosestPair2Zero(-10,9) exp=-1 but res=" + res;
+        System.out.println(res);
+        
+        // Edge cases
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{9}, opt);
+        assert res == Integer.MAX_VALUE : "Test-10: Failed for twoSumClosestPair2Zero(9) exp=Integer.MAX_VALUE but res=" + res;
+        System.out.println(res);
+        
+        res = new EasyProblems().twoSumClosestPair2Zero(new int[]{}, opt);
+        assert res == Integer.MAX_VALUE : "Test-10: Failed for twoSumClosestPair2Zero({}) exp=Integer.MAX_VALUE but res=" + res;
+        System.out.println(res);
+        
+        // Stress Test
+        int[] largeArr = new int[100000];
+        
+        for (int i = 0; i < 50000; i++) {
+            largeArr[i] = -i;
+            largeArr[99999 - i] = i;
+        }
+        
+        res = new EasyProblems().twoSumClosestPair2Zero(largeArr, opt);
+        // Closest to 0 would be (-1 + 0) = -1, but (-50000 + 50000) = 0 gives maximum
+        assert res == 0 : "Stress-Test: Failed for twoSumClosestPair2Zero(0,-1,..,50000,..), exp=0 but res=" + res;
+        System.out.println(res);
+	}
+	
+	private static void divideArrayInto3PartsTest()
+	{
+//		Double opt = 0.0;
+		Integer opt = 0;
+		
+		// Test-1: Empty array (edge case)
+		int[] res = new EasyProblems().divideArrayInto3Parts(new int[]{}, opt);
+		assert res[0] == -1 && res[1] == -1 : "Test-1: Failed for divideArrayInto3Parts([]) exp=[-1,-1] but res=[" + res[0] + "," + res[1] + "]";
+		System.out.println("Test-1: " + Arrays.toString(res));
+
+		// Test-2: Singleton array (edge case)
+		res = new EasyProblems().divideArrayInto3Parts(new int[]{5}, opt);
+		assert res[0] == -1 && res[1] == -1 : "Test-2: Failed for divideArrayInto3Parts([5]) exp=[-1,-1] but res=[" + res[0] + "," + res[1] + "]";
+		System.out.println("Test-2: " + Arrays.toString(res));
+
+		// Test-3: Stress test with large equal values
+		int[] large = new int[30_000];
+		Arrays.fill(large, 3);
+		BiFunctionLocale<int[], Integer, int[]> func =
+				new EasyProblems()::divideArrayInto3Parts;
+		res = task(func, large, opt);
+		assert res == null || res[0] > 0 && res[1] > res[0] && res[1] < large.length - 1 : "Test-3: Failed stress test on large array for res=[" + res[0] + "," + res[1] + "]";
+		System.out.println("Test-3: " + Arrays.toString(res));
+
+		// Test-4: Valid split in the middle
+		res = new EasyProblems().divideArrayInto3Parts(new int[]{1, 3, 4, 0, 4}, opt);
+		assert res[0] == 1 && res[1] == 2 : "Test-4: Failed for divideArrayInto3Parts([1, 3, 4, 0, 4]) exp=[1,2] but res=[" + res[0] + "," + res[1] + "]";
+		System.out.println("Test-4: " + Arrays.toString(res));
+
+		// Test-5: No valid partition
+		res = new EasyProblems().divideArrayInto3Parts(new int[]{1, 2, 3, 4, 5}, opt);
+		assert res[0] == -1 && res[1] == -1 : "Test-5: Failed for divideArrayInto3Parts([1,2,3,4,5]) exp=[-1,-1] but res=[" + res[0] + "," + res[1] + "]";
+		System.out.println("Test-5: " + Arrays.toString(res));
+
+		// Test-6: All zeros (multiple valid splits possible)
+		res = new EasyProblems().divideArrayInto3Parts(new int[]{0, 0, 0, 0, 0, 0}, opt);
+		assert res[0] == 0 && res[1] == 1 : "Test-6: Failed for divideArrayInto3Parts([0,0,0,0,0,0]) exp=[0,1] but res=[" + res[0] + "," + res[1] + "]";
+		System.out.println("Test-6: " + Arrays.toString(res));
+
+		// Test-7: Valid split with negative numbers
+		res = new EasyProblems().divideArrayInto3Parts(new int[]{1, -1, 1, -1, 1, -1, 1, -1}, opt);
+		assert res[0] == 1 && res[1] == 3 : "Test-7: Failed for divideArrayInto3Parts([1, -1, 1, -1, 1, -1, 1, -1]) exp=[1,3] but res=[" + res[0] + "," + res[1] + "]";
+		System.out.println("Test-7: " + Arrays.toString(res));
+
+	}
+	
+	private static void maxOnesTest()
+	{
+//		Double opt = 0.0;
+		Integer opt = 0;
+		
+		// Test-1: Empty array (edge case)
+		int res = new EasyProblems().maxOnes(new int[]{}, 2, opt); 
+		assert res == 0 : "Test-1: Failed for maxOnes([]) exp=0 but res=" + res; 
+		System.out.println("Test-1: " + res);
+
+		// Test-2: No flips allowed (edge case)
+		res = new EasyProblems().maxOnes(new int[]{1, 0, 1, 1, 0}, 0, opt); 
+		assert res == 2 : "Test-2: Failed for maxOnes([1,0,1,1,0]) k=0 exp=2 but res=" + res; 
+		System.out.println("Test-2: " + res);
+
+		// Test-3: Stress case (large array with 2 zeros)
+		int[] largeArr = new int[100000];
+		Arrays.fill(largeArr, 1);
+		largeArr[5000] = 0;
+		largeArr[99999] = 0;
+		TriFunctionLocale<int[], Integer, Integer, Integer> func =
+				new EasyProblems()::maxOnes;	
+		Integer resInteger = task(func, largeArr, 2, opt);
+		assert resInteger == null || resInteger == 100000 : "Test-3: Failed for maxOnes(largeArray) exp=100000 but res=" + resInteger; 
+		System.out.println("Test-3: " + resInteger);
+
+		// Test-4: Flip all zeros
+		res = new EasyProblems().maxOnes(new int[]{0, 0, 0}, 3, opt); 
+		assert res == 3 : "Test-4: Failed for maxOnes([0,0,0]) k=3 exp=3 but res=" + res; 
+		System.out.println("Test-4: " + res);
+
+		// Test-5: Mixed zeros and ones
+		res = new EasyProblems().maxOnes(new int[]{1, 0, 0, 1, 0, 1, 0, 1}, 2, opt); 
+		assert res == 5 : "Test-5: Failed for maxOnes([1,0,0,1,0,1,0,1]) k=2 exp=5 but res=" + res; 
+		System.out.println("Test-5: " + res);
+
+		// Test-6: Zeros spread out
+		res = new EasyProblems().maxOnes(new int[]{1, 0, 1, 0, 1, 0, 1}, 2, opt); 
+		assert res == 5 : "Test-6: Failed for maxOnes([1,0,1,0,1,0,1]) k=2 exp=5 but res=" + res; 
+		System.out.println("Test-6: " + res);
+
+		// Test-7: Only one flip needed
+		res = new EasyProblems().maxOnes(new int[]{1, 1, 0, 1, 1}, 1, opt); 
+		assert res == 5 : "Test-7: Failed for maxOnes([1,1,0,1,1]) k=1 exp=5 but res=" + res; 
+		System.out.println("Test-7: " + res);
+
+	}
+		
 }
 
 class EasyProblemsSuper
@@ -1256,4 +1662,50 @@ class EasyProblemsSuper
 		
 		return new int[] {};
 	}
+	
+	int[] divideArrayInto3Parts(int[] arr, double genAllPos)
+	{
+		if (genAllPos == 1 && arr.length < 11) System.out.printf("In spr.divideArrayInto3Parts(int[]=%s"
+				+ ",gen!)\n", Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			outerloop:
+			for (int i = 0, n = arr.length; i < n - 2; i++)
+				for (int j = i + 1; j < n - 1; j++) {
+					if (Thread.interrupted())
+						break outerloop;
+					int sum1 = Arrays.stream(arr).limit(i + 1).sum();
+					int sum2 = Arrays.stream(arr).skip(i + 1).limit(j - i).sum();
+					int sum3 = Arrays.stream(arr).skip(j + 1).sum();
+//					int sum1 = 0, sum2 = 0, sum3 = 0;
+//					
+//					for (int k = 0; k <= i; k++)
+//						sum1 += arr[k];
+//					
+//					for (int k = i + 1; k <= j; k++)
+//						sum2 += arr[k];
+//					
+//					for (int k = j + 1; k < n; k++)
+//						sum3 += arr[k];
+					
+					if (sum1 == sum2 && sum1 == sum3)
+						return new int[] {i, j};
+				}
+					
+		}
+		
+		return new int[] {-1, -1};
+	}
+}
+
+@FunctionalInterface
+interface BiFunctionLocale<T, U, V>
+{
+	V bifunc(T t, U u);
+}
+
+@FunctionalInterface
+interface TriFunctionLocale<T, U, V, W>
+{
+	W trifunc(T t, U u, V v);
 }

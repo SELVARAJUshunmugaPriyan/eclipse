@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import array.utility.BiFunctionLocale;
+import array.utility.TriFunctionLocale;
+
 import java.util.function.Function;
 import java.util.concurrent.Future;
 import java.util.concurrent.Callable;
@@ -1696,16 +1700,4 @@ class EasyProblemsSuper
 		
 		return new int[] {-1, -1};
 	}
-}
-
-@FunctionalInterface
-interface BiFunctionLocale<T, U, V>
-{
-	V bifunc(T t, U u);
-}
-
-@FunctionalInterface
-interface TriFunctionLocale<T, U, V, W>
-{
-	W trifunc(T t, U u, V v);
 }

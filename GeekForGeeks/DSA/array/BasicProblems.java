@@ -3,6 +3,9 @@ package array;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import array.utility.ReturnThroughException;
+
 import java.util.ArrayList;
 import javaArrayExcercises.BubbleSort;
 
@@ -788,18 +791,4 @@ class Desc implements java.util.Comparator<Integer>
 		return 0;
 	}
 	
-}
-
-class ReturnThroughException extends RuntimeException
-{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	public ReturnThroughException(String msg)
-	{
-		super(msg);
-	}
 }

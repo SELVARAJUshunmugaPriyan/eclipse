@@ -303,6 +303,42 @@ public class Prerequisite extends PrerequisiteSuper {
 		}
 	}
 	
+	boolean twoPntr(int[] arr, int target)
+	{
+		if (DEBUG) System.out.printf("In twoPntr(int[]=%s,tgt=%d)\n", 
+				Arrays.toString(arr), target);
+		
+		int left = 0, right = arr.length - 1;
+		
+		if (!new BasicProblems().isSorted(arr, false))
+			mergeSort(arr, 0, arr.length - 1);
+		
+		while (left < right) {
+			if (arr[left] + arr[right] == target)
+				return true;
+			else if (arr[left] + arr[right] > target)
+				right--;
+			else
+				left++;
+		}
+		
+		return false;
+	}
+	
+	int[] prefixSum(int[] arr)
+	{
+		if (DEBUG) System.out.printf("In prefixSum(int[]=%s)\n", Arrays.toString(arr));
+		
+		int[] res = new int[arr.length];
+		
+		res[0] = arr[0];
+		
+		for (int i = 1; i < arr.length; i++)
+			res[i] = arr[i] + res[i - 1];
+		
+		return res;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		binarySearchTest();
@@ -312,7 +348,9 @@ public class Prerequisite extends PrerequisiteSuper {
 //		mergeSortTest();
 //		BinarySearchProblems.main(DEBUG);
 //		cycleSortTest();
-		heapSortTest();
+//		heapSortTest();
+//		twoPntrTest();
+		prefixSumTest();
 	}
 	
 	private static Map<Integer, int[]> getKeyAndArray()
@@ -467,6 +505,23 @@ public class Prerequisite extends PrerequisiteSuper {
 		
 		assert new BasicProblems().isSorted(arr, false);
 		System.out.println(Arrays.toString(arr));
+	}
+	
+	private static void twoPntrTest()
+	{
+		assert new Prerequisite().twoPntr(new int[] {10, 20, 35, 50}, 70);
+		assert !new Prerequisite().twoPntr(new int[] {10, 20, 30}, 70);
+		assert new Prerequisite().twoPntr(new int[] {-8, 1, 4, 6, 10, 45}, 16);
+		System.out.println("true");
+	}
+	
+	private static void prefixSumTest()
+	{
+		assert Arrays.equals(new Prerequisite().prefixSum(new int[] {10, 20, 10, 5, 15}),
+				new int[] {10, 30, 40, 45, 60});
+		assert Arrays.equals(new Prerequisite().prefixSum(new int[] {30, 10, 10, 5, 50}),
+				new int[] {30, 40, 50, 55, 105});
+		System.out.println("true");
 	}
 }
 

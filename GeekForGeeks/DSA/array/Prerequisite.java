@@ -339,6 +339,25 @@ public class Prerequisite extends PrerequisiteSuper {
 		return res;
 	}
 	
+	int slidingWindow(int[] arr, int k)
+	{
+		if (DEBUG) System.out.printf("In slidingWindow(int[]=%s,int=%d)\n",
+				Arrays.toString(arr), k);
+		int sum = 0, max = Integer.MIN_VALUE;
+		
+		for (int i = 0; i < k; i++)
+			sum += arr[i];
+		
+		max = sum;
+		
+		for (int i = k; i < arr.length; i++) {
+			sum += arr[i] - arr[i - k];
+			max = Math.max(max, sum);
+		}
+		
+		return max;		
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		binarySearchTest();
@@ -350,7 +369,8 @@ public class Prerequisite extends PrerequisiteSuper {
 //		cycleSortTest();
 //		heapSortTest();
 //		twoPntrTest();
-		prefixSumTest();
+//		prefixSumTest();
+		slidingWindowTest();
 	}
 	
 	private static Map<Integer, int[]> getKeyAndArray()
@@ -522,6 +542,16 @@ public class Prerequisite extends PrerequisiteSuper {
 		assert Arrays.equals(new Prerequisite().prefixSum(new int[] {30, 10, 10, 5, 50}),
 				new int[] {30, 40, 50, 55, 105});
 		System.out.println("true");
+	}
+	
+	private static void slidingWindowTest()
+	{
+		int sum = new Prerequisite().slidingWindow(new int[] {5, 2, -1, 0, 3}, 3);
+		assert sum == 6;
+		System.out.println(sum);
+		sum = new Prerequisite().slidingWindow(new int[] {1, 4, 2, 10, 23, 3, 1, 0, 20}, 4);
+		assert sum == 39;
+		System.out.println(sum);
 	}
 }
 

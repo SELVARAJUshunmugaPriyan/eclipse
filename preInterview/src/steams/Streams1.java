@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 
@@ -236,6 +237,104 @@ public class Streams1 {
 										b.chars().sorted().toArray());
 		
 		System.out.println( anagram ? "It is anagram" : "It is not anagram" );
+		
+		// Joining list of Strings
+		List<String> names = List.of("ajai", "suriya", "R C");
+		String joinedNames = names.stream().collect(Collectors.joining(" "));
+		System.out.println(joinedNames);
+		
+		// Joining Array of Strings
+		String[] namesArray = {"ajai", "suriya", "R C"};
+		joinedNames = Arrays.stream(namesArray).collect(Collectors.joining(" "));
+		System.out.println(joinedNames);
+		
+		// missing integer
+		int[] numArr = {10, 2, 5, 7, 5, 6, 7};
+		
+		java.util.Set<Integer> numSet = Arrays.stream(numArr)
+										      .boxed()
+										      .collect(Collectors.toSet());
+										    
+		int minNum = Arrays.stream(numArr).min().getAsInt();
+		int maxNum = Arrays.stream(numArr).max().getAsInt();
+		
+		int missing = java.util.stream.IntStream.rangeClosed(minNum, maxNum)
+//									  .filter(x -> numSet.add(x))
+									  .filter(x -> !Arrays.stream(numArr)
+											  			 .anyMatch(y -> y == x))
+									  .findFirst()
+									  .getAsInt();
+		
+		System.out.println(missing);
+		
+		// missing integer list (cont. from above)
+		nums = java.util.stream.IntStream.rangeClosed(minNum, maxNum)
+										 .filter(x -> !numSet.contains(x))
+										 .boxed()
+										 .collect(Collectors.toList());
+		
+		System.out.println(nums);
+		
+		// target sum pairs
+		List<Integer> numsA = List.of(2, 4, 3, 5, 7, 8, 1);	
+		int missingA = 9;
+		
+		names = IntStream.range(0, numsA.size())
+						 .boxed()
+						 .flatMap(i -> IntStream.range(i + 1, numsA.size())
+								 			    .filter(
+							 			    		j -> numsA.get(i) +
+							 			    		     numsA.get(j) == 
+							 			    		     missingA
+								 			    )
+								 			    .mapToObj(
+							 			    		j -> "(" + numsA.get(i) +
+							 			    			 "," + numsA.get(j) +
+							 			    			 ")"
+								 			    )
+								 )
+						 .collect(Collectors.toList());
+		
+		System.out.println(names);
+		
+		// target sum pairs with for loop
+		names = new ArrayList<>();
+		
+		for (int i = 0; i < numsA.size(); i++)
+			for (int j = i + 1; j < numsA.size(); j++)
+				if (numsA.get(i) + numsA.get(j) == missingA)
+					names.add("(" + numsA.get(i) + "," + numsA.get(j) + ")");
+		
+		System.out.println(names);
+		
+		// find list of prime numbers in given range
+		IntStream.rangeClosed(10, 20)
+				 .filter(number -> number > 1 &&
+						 			IntStream.range(2, number)
+						 					 .allMatch(x -> number % x != 0)
+						)
+				 .forEach(System.out::println);
+		
+		// find given number is prime or not
+		int c = 7;
+		boolean x = IntStream.range(2, c).allMatch(i -> c % i != 0);
+		
+		System.out.println( x ? "isPrime" : "isNotPrime" );
+		
+		// find first prime number in given range
+		Integer xx = IntStream.rangeClosed(10, 20)
+					      .filter(number -> number > 1 &&
+					    		  			IntStream.range(2, number)
+					    		  					 .allMatch(z -> number % z != 0)
+					    		  )
+					      .findFirst()
+					      .getAsInt();
+		
+		System.out.println(xx);
 	}
-
+	
+	void streams1Answers()
+	{
+		return;
+	}
 }

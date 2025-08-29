@@ -10,10 +10,17 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+//import java.util.Scanner;
 
 public class Streams1 {
 
 	public static void main(String[] args) {
+		new Streams1().streams1Questions();
+		new Streams1().streams1Answers();
+	}
+	
+	void streams1Questions()
+	{
 		// TODO Auto-generated method stub
 		// find first duplicate
 		List<Integer> res = Arrays.asList(1, 2, 3, 1, 4, 5, 5);
@@ -333,8 +340,186 @@ public class Streams1 {
 		System.out.println(xx);
 	}
 	
+	@SuppressWarnings("unused")
 	void streams1Answers()
 	{
-		return;
+		List<Person> people = List.of(
+					new Person(1, "Priyan"),
+					new Person(2, "Keerthana")
+				);
+		
+		people.stream()
+			  .sorted(Comparator.reverseOrder())
+			  .skip(1)
+			  .forEach(System.out::println);
+		
+		String num = "407";
+		int ans = num.chars()
+				   .map(x -> x - '0')
+				   .map(x -> (int) Math.pow(x, 3))
+				   .reduce((x, y) -> x + y).getAsInt();
+		System.out.println(Integer.valueOf(num) == ans);
+		
+		List<Employee> employees = List.of(
+					new Employee(1, 11000, "maths"),
+					new Employee(2, 22000, "chemistry"),
+					new Employee(3, 33000, "physics"),
+					new Employee(4, 44000, "sociology"),
+					new Employee(5, 55000, "psychology"),
+					new Employee(6, 66000, "history"),
+					new Employee(7, 77000, "botany")
+				);
+		
+//		List<Employee> employees = new ArrayList<>();
+		
+		Map<String, Integer> maxSalary 
+			= employees.stream()
+				 	   .collect(Collectors.groupingBy(
+				 			   Employee::getDept,
+				 Collectors.collectingAndThen(
+						 Collectors.maxBy(Comparator.comparingInt(Employee::getSalary)),
+						 empOut -> empOut.map(Employee::getSalary).get())
+				 			   ));
+		
+		maxSalary.forEach((x, y) -> System.out.println(x + " " + y));
+		
+//		int i = 0;
+//		Scanner scn = new Scanner(System.in);
+		
+//		employees.clear();
+		
+//		while (i < 7) {
+//			int id = scn.nextInt();
+//			String dept = scn.next();
+//			int salary = scn.nextInt();
+//			employees.add(new Employee(id, salary, dept));
+//			i++;
+//		}
+//		
+//		scn.close();
+//		
+//		System.out.println(employees.stream()
+//				 				.max(Comparator.comparingInt(e -> e.getSalary()))
+//				 				.get());
+		
+//		System.out.println( true ? null : employees.stream()
+//								.collect(
+//									Collectors.groupingBy(
+//										x -> x.getDept(),
+//										Collectors.averagingInt(Employee::getSalary)
+//									))
+//								.entrySet()
+//								.stream()
+//								.max(Comparator.comparing(Map.Entry<String, Double>::getValue))
+//								.map(Map.Entry<String, Double>::getKey)
+//								.get());
+		
+//		List<List<List<Integer>>> transactions = new ArrayList<>();
+		
+//		List<Integer> cäre = List.of(1, 2, 3);
+//		List<Integer> c0re = List.of(4);
+//		List<Integer> cöre = List.of(5, 6, 7);
+		
+//		List<List<Integer>> Core = List.of(cäre, c0re, cöre);
+		
+//		transactions = List.of(Core);
+		
+//		List<List<List<Integer>>> transactions = Arrays.asList(
+//				Arrays.asList(
+//						Arrays.asList(1, 2, 3), Arrays.asList(4), Arrays.asList(5, 6, 7)));
+//		
+//		List<Integer> core = transactions.stream()
+//										 .flatMap(List::stream)
+//										 .flatMap(List::stream)
+//										 .sorted()
+//										 .collect(Collectors.toList());
+//		
+//		System.out.println(core);
+		
+		Map<Boolean, List<Integer>> numbers = 
+			IntStream.range(1, 20)
+					 .boxed()
+					 .collect(Collectors.partitioningBy(x -> x != 1 && 
+					 	IntStream.range(2, x)
+					 	         .allMatch(y -> x % y != 0)
+							 ));
+		
+		System.out.println(numbers);
+		
+		int sumArray[] = {16, 4, 17, 3, 5, 2};
+		
+		for (int i = 0; i < sumArray.length; i++) {
+			int max = -1;
+			for (int j = i + 1; j < sumArray.length; j++)
+				if (sumArray[j] > max)
+					max = sumArray[j];
+			sumArray[i] = max;
+		}
+		
+		System.out.println(IntStream.range(0, sumArray.length)
+				 .map(
+						 x -> IntStream.range(x, sumArray.length)
+						 			   .map(y -> sumArray[y])
+						 			   .max().getAsInt()
+				 ).boxed().toList());
+	}
+	
+	class Person implements Comparable<Person>
+	{
+		public int id;
+		public String name;
+		
+		Person(int id, String name)
+		{
+			this.id = id;
+			this.name = name;
+		}
+
+		@Override
+		public int compareTo(Person o) {
+			return this.name.length();
+		}
+		
+		@Override
+		public String toString() {
+			return id + " " + name;
+		}
+	}
+	
+	class Employee implements Comparable<Employee> {
+		
+		public int id, salary;
+		public String dept;
+		
+		Employee(int id, int salary, String dept)
+		{
+			this.id = id;
+			this.salary = salary;
+			this.dept = dept;
+		}
+		
+		String getDept()
+		{
+			return dept;
+		}
+		
+		int getSalary()
+		{
+			return salary;
+		}
+		
+		@Override
+		public int compareTo(Employee employee) {
+			return employee.salary;
+		}
+		
+		@Override
+		public String toString() {
+			return id + " " + salary + " " + dept;
+		}
+	}
+	
+	class Transaction
+	{
 	}
 }

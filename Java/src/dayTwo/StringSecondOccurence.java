@@ -3,7 +3,7 @@ package dayTwo;
 public class StringSecondOccurence {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String s = "maaaam";
 		char[] t = s.toCharArray();
 		int pos = s.length();

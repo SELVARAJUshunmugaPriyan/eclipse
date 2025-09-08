@@ -3,7 +3,7 @@ package solution;
 public class SolutionStringReverseEach {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		for(String s : args[0].split(",")) {
 			char[] C = s.toCharArray();
 			

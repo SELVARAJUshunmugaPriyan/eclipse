@@ -2,7 +2,7 @@ package solution;
 
 public class SolutionAmstrongNumber {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		long i = 0;
 		for(i = 0; i < Long.MAX_VALUE; i++)
 			;

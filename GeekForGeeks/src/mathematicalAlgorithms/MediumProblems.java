@@ -626,7 +626,7 @@ public class MediumProblems {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		System.out.println(Arrays.toString(multiplyIntArr(new int[] {5, 1, 8, 9}, 100)));
 //		Arrays.stream(factorialInArray(1000000)).forEach(System.out::print);
 //		System.out.println(factorialBigInt(100));

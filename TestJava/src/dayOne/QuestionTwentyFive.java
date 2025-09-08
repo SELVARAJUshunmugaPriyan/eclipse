@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class QuestionTwentyFive {
 	// studentRollNo
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		String studentName1 = "Shunmuga";
 //		String studentName2 = "priyan";
 //		int rollNumber1 = 11501;

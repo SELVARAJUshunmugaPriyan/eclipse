@@ -9,7 +9,7 @@ package p2;
 public class GeekNew {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		
 		// Accessing class Geek from package p1
 //		Geek o = new Geek();

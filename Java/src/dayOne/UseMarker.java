@@ -10,7 +10,7 @@ package dayOne;
 public class UseMarker {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Marker m1 = new Marker();
 		m1.brand = "Camlin";
 		m1.price = 70;

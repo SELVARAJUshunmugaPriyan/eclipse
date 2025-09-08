@@ -18,7 +18,6 @@ class Address
 	}
 	
 	public Address() {
-		// TODO Auto-generated constructor stub
 	}
 
 	// Setters
@@ -104,9 +103,7 @@ class Employee
 		this.address = address;
 	}
 	
-	public Employee() {
-		// TODO Auto-generated constructor stub
-	}
+	public Employee() {}
 
 	// Setters
 	public void setId(int id)
@@ -209,7 +206,7 @@ public class UseEmployee
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub		
+				
 		Employee employeeA = new Employee();
 		Employee employeeB = new Employee();
 		Employee employeeC = new Employee(1003, 26, 32000, 

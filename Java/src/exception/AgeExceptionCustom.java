@@ -6,7 +6,7 @@ public class AgeExceptionCustom
 	public static void main(String[] args)
 		throws AgeException
 	{
-		// TODO Auto-generated method stub
+		
 		System.out.println("Start");
 		
 		int age = 15;

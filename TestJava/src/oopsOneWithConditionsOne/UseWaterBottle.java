@@ -5,7 +5,7 @@ public class UseWaterBottle
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		WaterBottle w1 = new WaterBottle(), w2 = new WaterBottle(), w3 = new WaterBottle();
 		WaterBottle W[] = {w1, w2, w3};
 		int wCount = 0;

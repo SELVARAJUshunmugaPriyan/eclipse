@@ -5,7 +5,7 @@ import java.util.List;
 public class QuestionTwentyThree {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		List<Character> list = "I am coding".chars()
 							   .mapToObj(x -> (char) x).toList();
 		

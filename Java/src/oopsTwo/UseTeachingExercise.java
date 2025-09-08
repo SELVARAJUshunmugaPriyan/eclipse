@@ -49,7 +49,7 @@ public class UseTeachingExercise
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		TeachingExercise t = new TeachingExercise();
 		
 		System.out.println(t.findingMaximum(2, 3));

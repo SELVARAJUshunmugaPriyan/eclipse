@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class QuestionNine {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String str = "capgeminii";
 		List<Character> list = new ArrayList<>();
 		for (char c : str.toCharArray())

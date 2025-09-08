@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class QuestionSeventeen {
 	// ProductOfSum
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		int a = 6;
 //		int b = 28;
 //		int c = (a + b) * (a + b);

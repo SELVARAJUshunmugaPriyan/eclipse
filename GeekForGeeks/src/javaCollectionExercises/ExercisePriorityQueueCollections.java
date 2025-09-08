@@ -471,7 +471,7 @@ class MaxHeapWithpQ
 public class ExercisePriorityQueueCollections {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		new PQqHndlDupEleWithCstmComp();
 //		new CustomComparator();
 //		new SortByWeight();

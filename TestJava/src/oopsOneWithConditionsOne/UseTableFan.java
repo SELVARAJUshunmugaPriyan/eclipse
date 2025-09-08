@@ -5,7 +5,7 @@ public class UseTableFan
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		TableFan t1 = new TableFan(), t2 = new TableFan(), t3 = new TableFan();
 		TableFan T[] = {t1, t2, t3};
 		

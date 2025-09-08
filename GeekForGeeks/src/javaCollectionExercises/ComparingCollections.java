@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class ComparingCollections {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		new Comparing2ArrayLists();
 //		Comparing2ArrayLists.usingEquals();
 //		new Compare2Array();

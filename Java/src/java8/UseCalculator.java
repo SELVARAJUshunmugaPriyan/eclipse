@@ -14,7 +14,7 @@ public class UseCalculator {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		MyClass mc = new MyClass();
 		Calculator calc = mc::findMax;
 //		Calculator calc = new UseCalculator()::findMax;

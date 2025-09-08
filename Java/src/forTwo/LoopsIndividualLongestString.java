@@ -3,7 +3,7 @@ package forTwo;
 public class LoopsIndividualLongestString {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String[] s = new String[3];
 		s[0] = "Hello";
 		s[1] = "worlds";

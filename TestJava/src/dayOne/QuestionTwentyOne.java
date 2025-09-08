@@ -3,7 +3,7 @@ package dayOne;
 public class QuestionTwentyOne {
 	// ThreeChar
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		char a = 'a';
 		char b = 'b';
 		char c = 'c';

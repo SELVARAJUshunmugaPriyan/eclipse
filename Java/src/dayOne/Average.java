@@ -3,7 +3,7 @@ package dayOne;
 public class Average {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		float a = 5;
 		float b = 4;
 		float c = 9;

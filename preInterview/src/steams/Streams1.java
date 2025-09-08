@@ -21,7 +21,7 @@ public class Streams1 {
 	
 	void streams1Questions()
 	{
-		// TODO Auto-generated method stub
+		
 		// find first duplicate
 		List<Integer> res = Arrays.asList(1, 2, 3, 1, 4, 5, 5);
 		
@@ -340,7 +340,6 @@ public class Streams1 {
 		System.out.println(xx);
 	}
 	
-	@SuppressWarnings("unused")
 	void streams1Answers()
 	{
 		List<Person> people = List.of(
@@ -372,14 +371,14 @@ public class Streams1 {
 		
 //		List<Employee> employees = new ArrayList<>();
 		
-		Map<String, Integer> maxSalary 
-			= employees.stream()
-				 	   .collect(Collectors.groupingBy(
-				 			   Employee::getDept,
-				 Collectors.collectingAndThen(
-						 Collectors.maxBy(Comparator.comparingInt(Employee::getSalary)),
-						 empOut -> empOut.map(Employee::getSalary).get())
-				 			   ));
+		Map<String, Integer> maxSalary = employees.stream()
+												  .collect(
+			Collectors.groupingBy(
+						Employee::getDept,
+						Collectors.collectingAndThen(
+							Collectors.maxBy(Comparator.comparingInt(Employee::getSalary)),
+							empOut -> empOut.map(x -> x.getSalary()).get())
+									));
 		
 		maxSalary.forEach((x, y) -> System.out.println(x + " " + y));
 		

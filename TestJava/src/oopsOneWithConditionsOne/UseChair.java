@@ -5,7 +5,7 @@ public class UseChair
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Chair c1 = new Chair(), c2 = new Chair(), c3 = new Chair();
 		Chair C[] = {c1, c2, c3};
 		int sum = 0;

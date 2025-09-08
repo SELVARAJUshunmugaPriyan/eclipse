@@ -3,7 +3,7 @@ package forTwo;
 public class LoopsEForOddCount {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[] ia = {1, 31, 45, 62, 74, 85};
 		int count = 0;
 		

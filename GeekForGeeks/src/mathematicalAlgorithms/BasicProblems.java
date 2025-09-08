@@ -305,7 +305,7 @@ public class BasicProblems {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		System.out.println(nthTermOfAP(5, 2, 10));
 //		System.out.println(nthTermOfGP(2, 2, 4));
 //		System.out.println(triangularNumber(11));

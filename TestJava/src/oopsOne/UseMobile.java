@@ -10,9 +10,7 @@ class Camera
 	
 	// Constructors
 	public Camera()
-	{
-		// TODO Auto-generated constructor stub
-	}
+	{}
 	
 	public Camera(int megapixels, boolean isOpticalZoom,
 			boolean isDigitalZoom, String location)
@@ -83,9 +81,7 @@ class Mobile
 	
 	// Constructor
 	public Mobile()
-	{
-		// TODO Auto-generated constructor stub
-	}
+	{}
 	
 	public Mobile(int id, int price, float memoryInGB,
 			String brand, String model, Camera cameraNames[])
@@ -164,7 +160,7 @@ class Mobile
 public class UseMobile {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		Mobile mobile1 = new Mobile(616, 85000, 12.0f,
 //				"Samsung", "S20", new String[] {
 //						"Canon", "Fujifilm", "Nikon"

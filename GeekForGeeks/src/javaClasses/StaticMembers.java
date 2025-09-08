@@ -13,7 +13,7 @@ public class StaticMembers
 	@SuppressWarnings("unused")
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Demo smA = new Demo("A"); // static block of a class is 
 								  // executed only the first time
 								  // before the constructor

@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Students {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		HashMap<Integer, String> l = new HashMap<>();
 		l.put(101, "Ajay");
 		l.put(102, "Prabhu");

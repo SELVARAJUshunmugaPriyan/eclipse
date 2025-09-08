@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class QuestionEight {
 	// StudentAge
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Scanner scn = new Scanner(System.in);
 		
 		int age; // = 16;

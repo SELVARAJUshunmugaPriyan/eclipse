@@ -3,7 +3,7 @@ package codility;
 public class PrefixSumsMinAvgTwoSlice {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[] A = {-3, -5, -8, -4, -10};
 		float minAvg =  10001;
         int minAvgStartPosition = -1;

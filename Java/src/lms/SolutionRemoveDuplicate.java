@@ -6,7 +6,7 @@ import java.util.Collections;
 public class SolutionRemoveDuplicate {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		ArrayList<Integer> I = new ArrayList<Integer>();
 		
 		for(String arg : args) {

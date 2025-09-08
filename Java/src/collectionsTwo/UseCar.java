@@ -69,7 +69,7 @@ class Car
 public class UseCar {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Car c1 = new Car(0, 1200000, "BMW", "Blue", "X8", true);
 		Car c2 = new Car(1, 6700000, "Volvo", "Green", "X12", true);
 		Car c3 = new Car(17, 5700000, "Mercedes", "Yellow", "C-Class", true);

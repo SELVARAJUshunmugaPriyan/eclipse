@@ -11,7 +11,7 @@ class AccountHolder {
 public class UseAccountHolder {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		AccountHolder a1 = new AccountHolder();
 		AccountHolder a2 = new AccountHolder();
 		AccountHolder a3 = new AccountHolder();

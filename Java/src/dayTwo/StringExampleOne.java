@@ -3,7 +3,7 @@ package dayTwo;
 public class StringExampleOne {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String s = "welcome/to/my/world";
 		String[] t = s.split("/");
 //		t = {"welcome", "to", "my", "world"};

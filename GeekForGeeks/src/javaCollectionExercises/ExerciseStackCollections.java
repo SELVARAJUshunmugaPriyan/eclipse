@@ -201,7 +201,7 @@ public class ExerciseStackCollections {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		new WeightOfParanthesis(false);
 		
 		try (Scanner scn = new Scanner(System.in)) {

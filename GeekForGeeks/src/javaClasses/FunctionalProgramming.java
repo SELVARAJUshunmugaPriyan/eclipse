@@ -7,7 +7,7 @@ public class FunctionalProgramming {
 
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		
 		// Old Method
 		Runnable run = new Runnable() {

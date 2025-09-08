@@ -5,7 +5,7 @@ package streamsAPIlogicQuestion;
 public class QuestionTwentyFour {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		Stream.iterate(1, x -> x + 1)
 //		.limit(20)
 		"123456789".chars()

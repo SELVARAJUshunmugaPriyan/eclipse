@@ -3,7 +3,7 @@ package conditions;
 public class ConditionsEvenOrOdd {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		float i = 7;
 //		
 //		if ((i % 2) != 0) {

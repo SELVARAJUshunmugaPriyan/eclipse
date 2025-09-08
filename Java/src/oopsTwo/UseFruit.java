@@ -24,7 +24,7 @@ public class UseFruit
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Fruit f = new Fruit();
 		
 		f.color = "green";
@@ -146,7 +146,7 @@ public class UseFruit
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Fruit f = new Fruit("green", "sour", true);
 		
 		System.out.println(f);

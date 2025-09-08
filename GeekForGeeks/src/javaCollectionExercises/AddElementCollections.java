@@ -168,7 +168,7 @@ class AddingQueue
 public class AddElementCollections {
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		AddingArrayList.addArrayList();
 //		AddingArrayList.indexAddArrayList();
 //		AddingHashSet.initializingHashSet();

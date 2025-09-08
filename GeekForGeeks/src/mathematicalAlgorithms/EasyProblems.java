@@ -422,7 +422,7 @@ public class EasyProblems {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		System.out.println(sumOfSeq2_22_222(3));
 //		System.out.println(sumOfSer1n23n2(Integer.valueOf(10)));
 //		System.out.println(sumOfSer0_60_06(3.0));

@@ -3,7 +3,7 @@ package forThree;
 public class NestedForStringRepeatLettersTwo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String S = "aluminium";
 		char[] C = S.toCharArray();
 		

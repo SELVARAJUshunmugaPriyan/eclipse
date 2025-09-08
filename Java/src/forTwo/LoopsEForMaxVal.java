@@ -3,7 +3,7 @@ package forTwo;
 public class LoopsEForMaxVal {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[] ia = {31, 75, 5, 30, 0, -23, 77, 9999, 0};
 		int max = 0;
 		

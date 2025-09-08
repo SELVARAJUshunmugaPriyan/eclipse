@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class LoopsVowels {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		String s = "PROGRAMS";
 		Scanner scn = new Scanner(System.in);
 		String s = scn.nextLine();

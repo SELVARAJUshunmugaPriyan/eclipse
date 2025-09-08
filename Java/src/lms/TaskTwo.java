@@ -3,7 +3,7 @@ package lms;
 public class TaskTwo {
 	// String Manipulation
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String[] t = args[0].split(",");
 		
 		System.out.println(t[1].toUpperCase());

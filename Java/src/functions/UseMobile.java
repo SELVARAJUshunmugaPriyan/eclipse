@@ -80,7 +80,7 @@ class Mobile {
 public class UseMobile {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Mobile m1 = new Mobile(), m2 = new Mobile(),
 			   m3 = new Mobile(), m4 = new Mobile(),
 			   m5 = new Mobile();

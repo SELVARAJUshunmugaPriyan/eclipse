@@ -3,7 +3,7 @@ package conditions;
 public class ConditionsArithematicOperations {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		float i = 10, j = 20;
 		String operation = "Division";
 		

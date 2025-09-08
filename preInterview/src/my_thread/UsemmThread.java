@@ -3,7 +3,6 @@ package my_thread;
 public class UsemmThread {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println("main starts");
 		
 		Thread t1 = new Thread(() -> {
@@ -12,7 +11,6 @@ public class UsemmThread {
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -24,7 +22,6 @@ public class UsemmThread {
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

@@ -3,7 +3,7 @@ package loop;
 public class LoopsFibonacciSeries {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int n1 = 0, n2 = 1/*, tot*/;
 		
 		for (int i = 0; i <= 5; i++) {

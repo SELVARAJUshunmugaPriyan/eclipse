@@ -9,7 +9,7 @@ class AirConditioner {
 public class UseAirConditioner {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		AirConditioner a1 = new AirConditioner();
 		AirConditioner a2 = new AirConditioner();
 		

@@ -5,7 +5,7 @@ public class UseMask
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Mask m1 = new Mask(), m2 = new Mask(), m3 = new Mask();
 		Mask M[] = {m1, m2, m3};
 		int max = 0;

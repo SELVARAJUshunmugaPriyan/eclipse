@@ -3,7 +3,7 @@ package loop;
 public class LoopsStringSplit {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String t = "Java is a fun and Java is a program";
 		String[] S = t.split("");
 		

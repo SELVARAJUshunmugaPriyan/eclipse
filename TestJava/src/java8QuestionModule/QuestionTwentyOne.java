@@ -34,7 +34,7 @@ public class QuestionTwentyOne
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Machines vehicle = new Vehicles();
 		System.out.println(vehicle.showMachineType("car"));
 		System.out.println(vehicle.showProductionYear(56));

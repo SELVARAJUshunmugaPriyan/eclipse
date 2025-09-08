@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class QuestionFourteen {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		List<Character> list = "Nishanthi".chars()
 				.mapToObj(x -> (char) x)
 				.collect(Collectors.toList());

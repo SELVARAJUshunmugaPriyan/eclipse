@@ -79,7 +79,7 @@ public class MatrixRotationOne
 	// Driver code
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		MatrixRotationOne rotate = new MatrixRotationOne();
 		Scanner scn = new Scanner(System.in);
 		

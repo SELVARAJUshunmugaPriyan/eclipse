@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class LoopsScalarProduct {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[][] matrix = new int[args.length][], sclPrd = new int[args.length][];
 		int j = 0;
 		

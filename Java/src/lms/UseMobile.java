@@ -11,7 +11,7 @@ class Mobile {
 public class UseMobile {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Mobile m1 = new Mobile();
 		Mobile m2 = new Mobile();
 		Mobile m3 = new Mobile();

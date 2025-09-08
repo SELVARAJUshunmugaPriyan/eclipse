@@ -27,7 +27,7 @@ public class UseFunctionalInterface {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		UseFunctionalInterface j = new UseFunctionalInterface();
 		Interface i = j::getImplementd;
 		System.out.println(i.getter());

@@ -3,7 +3,7 @@ package lms;
 public class SolutionArrayEquals {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int i = 0;
 		boolean isEqual = true;
 		int[][] ARR = new int[args.length][];

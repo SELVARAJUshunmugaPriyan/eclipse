@@ -3,7 +3,7 @@ package forThree;
 public class WhileNumberPalindromeOne {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int N = 1234, i = 0, temp = N;
 		int[] I = new int[(int) Math.log10(N) + 1];
 		boolean isPalindrome = true;

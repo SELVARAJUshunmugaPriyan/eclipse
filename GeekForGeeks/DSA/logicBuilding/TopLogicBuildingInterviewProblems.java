@@ -826,7 +826,7 @@ public class TopLogicBuildingInterviewProblems {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		System.out.println(countDigits("123"));
 		System.out.println(maxKPower(10, 9));
 //		for (int i = 0; i <= 100; i++)

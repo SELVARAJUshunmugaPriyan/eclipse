@@ -20,7 +20,7 @@ public class UseTeacher
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Human h = new Human();
 		
 		h.name = "Ravi";
@@ -99,7 +99,7 @@ public class UseTeacher
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Human h = new Human("Ravi", 42, true);
 		
 		System.out.println(h);

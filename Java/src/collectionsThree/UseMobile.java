@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class UseMobile {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		/*
 //		Mobile m1 = new Mobile(101, 12000, "Samsung", "Blue", true);
 //		Mobile m2 = new Mobile(222, 40000, "HTC", "Red", false);

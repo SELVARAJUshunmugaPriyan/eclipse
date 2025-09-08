@@ -5,7 +5,7 @@ import java.util.Optional;
 public class OptionalExample {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Optional<String> a = Optional.of("hi");
 		System.out.println(a);
 		Optional<String> b = Optional.of("hi");

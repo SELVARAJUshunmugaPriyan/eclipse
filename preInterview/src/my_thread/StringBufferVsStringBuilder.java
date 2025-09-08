@@ -3,7 +3,7 @@ package my_thread;
 public class StringBufferVsStringBuilder {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		long start, end;
 		StringBuffer s1 = new StringBuffer("x");
 		start = System.nanoTime();

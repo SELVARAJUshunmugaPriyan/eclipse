@@ -563,7 +563,7 @@ public class HardPatterns {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		try (Scanner scn = new Scanner(System.in)) {
 			while (true) {
 				System.out.println("Enter a non-zero positive integer: ");

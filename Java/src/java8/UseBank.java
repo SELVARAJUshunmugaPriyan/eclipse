@@ -3,7 +3,7 @@ package java8;
 public class UseBank {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		CubBank cb = new CubBank();
 		System.out.println(cb.rateOfInterest(1000));
 		System.out.println(Bank.accNumber(1000L));

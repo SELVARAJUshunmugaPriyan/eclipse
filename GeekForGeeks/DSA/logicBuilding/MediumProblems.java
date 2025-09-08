@@ -1105,7 +1105,7 @@ public class MediumProblems {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		MediumProblems medium = new MediumProblems();
 //		System.out.println(medium.squareRoot(29f));
 //		medium.numWith3Divisors(1000l);

@@ -5,7 +5,7 @@ public class UseStapler
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Stapler s1 = new Stapler(), s2 = new Stapler(), s3 = new Stapler();
 		Stapler S[] = {s1, s2, s3};
 		

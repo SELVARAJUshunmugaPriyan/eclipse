@@ -92,7 +92,7 @@ class FunctionsTwo {
 public class UseFunctionsTwo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		FunctionsTwo f = new FunctionsTwo();
 		int[] I = {1, 2, -3};
 //		System.out.println(f.maximum(I));

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class QuestionTwelve {
 	// DifferenceWeight
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		int student1Weight = 40;
 //		int student2Weight = 30;
 //		System.out.println("Difference between their weight is " +

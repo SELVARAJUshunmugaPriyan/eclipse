@@ -3,7 +3,7 @@ package conditions;
 public class ConditionsGreetings {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int time = 6;
 		
 		if ((time >= 1) && (time <= 4)) {

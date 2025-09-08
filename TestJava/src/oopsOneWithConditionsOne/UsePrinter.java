@@ -5,7 +5,7 @@ public class UsePrinter
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Printer p1 = new Printer(), p2 = new Printer(), p3 = new Printer();
 		Printer P[] = {p1, p2, p3};
 		int count5k = 0, countBlack = 0;

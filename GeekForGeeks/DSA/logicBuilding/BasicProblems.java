@@ -205,7 +205,7 @@ public class BasicProblems {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		BasicProblems basic = new BasicProblems();
 //		System.out.println(basic.checkEvenOrOdd(Integer.valueOf(3)));
 //		basic.printMulTable(5);

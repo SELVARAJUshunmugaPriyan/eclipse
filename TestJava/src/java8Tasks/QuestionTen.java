@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class QuestionTen {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		try (Scanner scn = new Scanner(System.in)) {
 			while (true) {
 				System.out.println("Press enter key twice to convert Array -> ArrayList\n"

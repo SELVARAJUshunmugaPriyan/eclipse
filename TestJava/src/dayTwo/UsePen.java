@@ -10,7 +10,7 @@ class Pen {
 public class UsePen {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Pen p1 = new Pen();
 		
 		p1.brand = "Camlin";

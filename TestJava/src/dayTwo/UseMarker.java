@@ -10,7 +10,7 @@ class Marker {
 public class UseMarker {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Marker m1 = new Marker();
 		Marker m2 = new Marker();
 		Marker m3 = new Marker();

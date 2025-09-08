@@ -929,7 +929,7 @@ public class RegexExcercisesOne
 	// Main function
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		RegexExcercisesOne regex = new RegexExcercisesOne();
 //		regex.zeroOneOrMoreExcercises();
 /*		Pattern methods :-

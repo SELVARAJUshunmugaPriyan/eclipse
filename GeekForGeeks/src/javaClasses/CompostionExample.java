@@ -69,7 +69,7 @@ class House
 public class CompostionExample {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		House house = new House("Dream House");
 		
 		// Each room object is composed into house object

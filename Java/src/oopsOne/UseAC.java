@@ -66,7 +66,7 @@ class AC
 public class UseAC {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		Compressor c = new Compressor();
 //		
 //		c.setBrand("NEXO");

@@ -3,7 +3,7 @@ package exception;
 public class InvalidProductExceptionCustom {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String cart[] = {"aeroplane", "umbrella", "knife", "dictionary"};
 		
 		for (String product : cart) {

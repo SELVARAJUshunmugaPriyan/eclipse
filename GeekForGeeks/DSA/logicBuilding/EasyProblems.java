@@ -799,7 +799,7 @@ public class EasyProblems {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		EasyProblems easy = new EasyProblems();
 //		System.out.println(easy.sumOfDigits(12345));
 //		System.out.println(easy.reverseDigits(12345));

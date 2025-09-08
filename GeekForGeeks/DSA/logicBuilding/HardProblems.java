@@ -382,7 +382,7 @@ public class HardProblems
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		HardProblems hard = new HardProblems();
 //		hard.sieveOfEratosthenes(10000f);
 //		hard.sieveOfEratosthenes(Float.valueOf(10000f));

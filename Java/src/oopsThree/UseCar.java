@@ -25,7 +25,7 @@ class SportsCar implements Car
 public class UseCar {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		SportsCar sc = new SportsCar();
 		System.out.println(sc.getBrand("BMW") + " " 
 				+ sc.getPrice(1000000, 100000) + " "

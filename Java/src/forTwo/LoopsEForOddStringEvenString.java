@@ -3,7 +3,7 @@ package forTwo;
 public class LoopsEForOddStringEvenString {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String[] sa = {"Hello", "Worlds"};
 		String even = "", odd = "";
 		

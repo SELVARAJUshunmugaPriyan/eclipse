@@ -30,7 +30,7 @@ class SchoolBag implements Bag
 public class QuestionTwentyFour {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		SchoolBag bag = new SchoolBag();
 		
 		System.out.println(bag.noOfZips(10));

@@ -24,7 +24,7 @@ class Asus
 public class QuestionTwentyThree {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Laptop lap = new Asus()::getPrice;
 		System.out.println(lap.getPrice("25000"));
 		System.out.println(Laptop.confg("Asus", "Black", "12Gb"));

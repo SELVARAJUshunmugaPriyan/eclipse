@@ -17,7 +17,7 @@ class CustomComparator implements Comparator<Employee>
 public class QuestionFour {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		List<Employee> list = new ArrayList<>();
 		try (Scanner scn = new Scanner(System.in)) {
 			while (true) {

@@ -24,7 +24,7 @@ class Calci {
 public class UseCalci {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Calci c = new Calci();
 		
 		c.add(12, 113);

@@ -9,7 +9,7 @@ public class QuestionThree {
 	private static final boolean DEBUG = true;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		List<Integer> nums = Arrays.asList(12, 39, 5, 6, 98, 0, -2);
 		
 		if (DEBUG) System.out.println(nums);

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class QuestionThrityOne {
 	// StudentSection
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		String studentName = "Varun";
 //		int standard = 10;
 //		char section = 'c';

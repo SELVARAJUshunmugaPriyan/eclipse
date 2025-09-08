@@ -51,7 +51,7 @@ public class UseBank
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Bank b = new Bank();
 		
 //		System.out.println(b.findLoanEligibilityAmount());

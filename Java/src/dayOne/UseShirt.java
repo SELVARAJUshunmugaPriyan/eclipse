@@ -3,7 +3,7 @@ package dayOne;
 public class UseShirt {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Shirt s1 = new Shirt();
 		s1.brand = "otto";
 		s1.price = 400;

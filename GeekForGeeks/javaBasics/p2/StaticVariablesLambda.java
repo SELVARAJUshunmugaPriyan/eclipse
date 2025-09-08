@@ -93,7 +93,7 @@ class StaticReferenceVariableLambda
 	
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		PrintCoin obj = value -> {
 			value = value + 100;
 			coin = coinsBought.stream().reduce(0, (coin1, coin2)

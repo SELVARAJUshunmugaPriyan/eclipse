@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class ArrayCopy {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner scn = new Scanner(System.in);
 		
 		try {
@@ -86,7 +85,7 @@ public class ArrayCopy {
 	}
 
 	private static int[] arrayCopyIndividually(int[] I) {
-		// TODO Auto-generated method stub
+		
 		int[] J = new int[I.length];
 		for(int i = 0; i < I.length; i++)
 			J[i] = I[i];

@@ -5,7 +5,7 @@ public class WeightOfParanthesis {
 	private final static boolean DEBUG = true;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub		
+				
 		int weight = weight(args[0]);
 		if (weight != -1)
 			System.out.println(args[0] + " weight=" + weight);

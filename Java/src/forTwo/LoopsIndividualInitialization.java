@@ -3,7 +3,7 @@ package forTwo;
 public class LoopsIndividualInitialization {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[] a = new int[3];
 		
 		a[0] = 12;

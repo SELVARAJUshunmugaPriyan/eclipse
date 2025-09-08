@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class QuestionEight {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String str = "@123&";
 		List<Character> list = new ArrayList<>();
 		for (char c : str.toCharArray())

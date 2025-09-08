@@ -5,7 +5,7 @@ public class UseFlight
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Flight f1 = new Flight(), f2 = new Flight(), f3 = new Flight();
 		Flight F[] = {f1, f2, f3};
 		

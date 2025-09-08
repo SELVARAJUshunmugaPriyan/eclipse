@@ -3,7 +3,7 @@ package oopsOneWithConditionsOne;
 public class Solution {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String s = "SUN,MON,TUE,WED,THURS,FRI,SAT", S[] = s.split(",");
 		int countWeekends = 0, countWeekdays = 0, i = 0; 
 		while (i < S.length)

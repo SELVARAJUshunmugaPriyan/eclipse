@@ -3,7 +3,7 @@ package forThree;
 public class NestedForStringStringReversalOne {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String s = "I,am,an,Engineer";
 		for(String t : s.split(",")) {
 			boolean isLowerCase = true;

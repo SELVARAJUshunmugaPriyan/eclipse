@@ -9,7 +9,7 @@ class Hospital {
 public class UseHospital {
 	// Class Hospital and string operations
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Hospital hos1 = new Hospital();
 		Hospital hos2 = new Hospital();
 		Hospital hos3 = new Hospital();

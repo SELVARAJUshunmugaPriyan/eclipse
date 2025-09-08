@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class QuestionSeven {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		List<Employee> list = new ArrayList<>();
 		File file = new File("C:\\Users\\monk_\\eclipse-workspace\\TestJava\\src\\java8Tasks\\EmployeeDetails.txt");
 		

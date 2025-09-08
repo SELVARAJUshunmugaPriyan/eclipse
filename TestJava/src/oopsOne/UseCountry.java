@@ -189,7 +189,7 @@ public class UseCountry
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Country countryA = new Country();
 		Country countryB = new Country();
 		Country countryC = new Country();

@@ -10,7 +10,7 @@ class Laptop {
 public class UseLaptop {
 	// Class Laptop and string operations
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Laptop laptop1 = new Laptop();
 		
 		laptop1.brand = "Dell";

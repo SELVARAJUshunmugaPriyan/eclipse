@@ -5,7 +5,7 @@ public class UseNovel
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Novel n1 = new Novel(), n2 = new Novel(), n3 = new Novel();
 		Novel N[] = {n1, n2, n3};
 		int sum = 0;

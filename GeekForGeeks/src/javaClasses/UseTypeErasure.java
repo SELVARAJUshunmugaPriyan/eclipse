@@ -18,7 +18,6 @@ public class UseTypeErasure
 		
 		UnboundedType(type o) 
 		{
-			// TODO Auto-generated constructor stub
 			obj = o;
 		}
 		type getObj()
@@ -36,7 +35,6 @@ public class UseTypeErasure
 		
 		BoundedType(type o) 
 		{
-			// TODO Auto-generated constructor stub
 			obj = o;
 		}
 		type getObj()
@@ -70,7 +68,7 @@ public class UseTypeErasure
 	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		UnboundedType o = new UseTypeErasure().new UnboundedType(null);
 		BoundedType p = new UseTypeErasure().new BoundedType(null);
 		System.out.println(o.getObj());

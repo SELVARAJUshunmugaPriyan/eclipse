@@ -32,7 +32,7 @@ public class UseEmployee
 	
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		SunStar s = new Employee();
 		s.printInfo();
 

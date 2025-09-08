@@ -301,7 +301,7 @@ public class TypesOfClasses
 	// Main function
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 //		Student.main(args);
 //		FinalClass.main(args);
 //		UseStaticClass.main(args);

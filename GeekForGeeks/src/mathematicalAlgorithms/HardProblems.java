@@ -462,7 +462,7 @@ public class HardProblems {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		System.out.println(isFeasible2Jug(5, 3, 4));
 //		System.out.println(minSteps1Jug(5, 3, 3));
 //		simpleSieve(100, new Vector<Integer>());

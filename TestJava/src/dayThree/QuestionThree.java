@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class QuestionThree {
 	// Contains "soft" and ends with "v"
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Scanner scn = new Scanner(System.in);
 		
 		String s;

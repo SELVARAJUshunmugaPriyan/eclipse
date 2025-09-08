@@ -3,7 +3,7 @@ package forTwo;
 public class LoopsSumArray {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int[] ia = new int[3];
 		
 		int sum = 0;

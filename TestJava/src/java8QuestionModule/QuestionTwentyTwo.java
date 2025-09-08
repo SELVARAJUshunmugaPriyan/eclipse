@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 public class QuestionTwentyTwo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Optional<Object[]> objs;
 		String[] str = null;
 		

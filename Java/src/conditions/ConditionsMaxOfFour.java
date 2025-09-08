@@ -3,7 +3,7 @@ package conditions;
 public class ConditionsMaxOfFour {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int i = 24, j = 76, k = 13, l = 23;
 		
 		if ((i > j) && (i > k) && (i > l)) {

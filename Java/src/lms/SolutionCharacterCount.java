@@ -3,7 +3,7 @@ package lms;
 public class SolutionCharacterCount {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		char[] C = args[0].toCharArray();
 		for(int i = 0; i < C.length; i++) {
 			int count = 1;

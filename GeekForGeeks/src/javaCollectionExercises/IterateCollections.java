@@ -32,7 +32,6 @@ class ArrayListCollection
 	// Constructor of class ArrayListCollection
 	ArrayListCollection(String s, int n) 
 	{
-		// TODO Auto-generated constructor stub
 		name = s;
 		rollNo = n;
 	}
@@ -267,7 +266,6 @@ public class IterateCollections
 	// Main Function
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
 //		BasicPrinting.main(args);
 //		ArrayListCollection.main(args);
 //		HashMapCollection.main(args);

@@ -3,7 +3,7 @@ package arrays;
 public class CombineArrays {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int A[] = {1, 2, 3, 4};
 		int B[] = {5, 6, 7};
 		int C[] = new int[A.length + B.length];

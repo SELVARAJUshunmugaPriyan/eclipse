@@ -12,7 +12,7 @@ public class RegexExercisesTwo
 	// Function to illustrate capturing groups
 	void capturingGroups(String input) 
 	{
-		// TODO Auto-generated method stub
+		
 		// Sample input : sample data with 1234 (digits) in middle
 //		String regex = "(.*?)(\\d+)(.*)"; // returns 1234
 //		String regex = "(.*?)(\\d)(.*)"; // returns 1
@@ -77,7 +77,7 @@ public class RegexExercisesTwo
 	// main function
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Scanner scn = new Scanner(System.in);
 		RegexExercisesTwo regex = new RegexExercisesTwo();
 		

@@ -102,7 +102,7 @@ public class ObjectClassMethods
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		// Create a Book object and print its details
 //		Book b1 = new ObjectClassMethods().new Book(
 //				"The Hitchhiker's Guide to the Galaxy",

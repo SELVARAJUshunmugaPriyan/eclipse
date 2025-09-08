@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class QuestionNineteen {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		List<Integer> lstA = Arrays.asList(2, 2, 4, 4, 6, 6, 2, 7, 1, 3, 9);
 		List<Integer> lstB = Arrays.asList(3, 2, 5, 8, 9, 11, 16, 7, 0, 3, 9);
 		List<Integer> lstC = Arrays.asList(8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9);

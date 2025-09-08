@@ -158,7 +158,7 @@ public class UseMobile
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Mobile m1 = new Mobile(10000, "Samsung", "Blue", 6.8f, true);
 		Mobile m2 = new Mobile(20000, "LG", "Green", 5.7f, true);
 		Mobile m3 = new Mobile(15000, "Moto", "Black", 6.8f, false);

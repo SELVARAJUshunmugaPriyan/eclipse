@@ -3,7 +3,7 @@ package dayOne;
 public class EmployeeDetails {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int id = 01234567;
 		String name = "Priyan";
 		String role = "Student";

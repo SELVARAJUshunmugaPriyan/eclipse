@@ -23,7 +23,7 @@ public class UseCalci
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Calci c = new Calci();
 		System.out.println(c.getAdd(10, 20));
 		System.out.println(c.getAdd("A", "B"));

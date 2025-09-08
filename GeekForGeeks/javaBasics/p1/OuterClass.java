@@ -77,7 +77,6 @@ public class OuterClass
 	protected class ProtectedInnerClass
 	{
 		public ProtectedInnerClass() {
-			// TODO Auto-generated constructor stub
 		}
 
 		public void displayInnerData()
@@ -91,7 +90,6 @@ public class OuterClass
 	{
 
 		public StaticProtectedInnerClass() {
-			// TODO Auto-generated constructor stub
 		}
 		
 	}

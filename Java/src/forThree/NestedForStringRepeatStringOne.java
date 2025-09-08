@@ -3,7 +3,7 @@ package forThree;
 public class NestedForStringRepeatStringOne {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String s = "I am Prabhu and I am from Canada", u = "";
 		String[] T = s.split(" ");
 		

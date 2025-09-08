@@ -83,7 +83,7 @@ class EmployeeObj
 public class QuestionTwentySix {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Employees emp = new Employees();
 		Employee maxSalary = emp::maxSalaryEmployee;
 		Employee maxExp = emp::maxExpEmployee;

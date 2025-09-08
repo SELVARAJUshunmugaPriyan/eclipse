@@ -5,7 +5,7 @@ public class PasswordExceptionCustom
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		String passwords[] = {"abc", "12345678@", "@", "12345678"};
 		
 		for (String password : passwords)

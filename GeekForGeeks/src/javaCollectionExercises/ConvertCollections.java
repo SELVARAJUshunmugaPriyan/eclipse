@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class ConvertCollections {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		new ConvertArray2ArrayList();
 //		ConvertArray2ArrayList.usingAsListFixed();
 //		ConvertArray2ArrayList.usingAsListResizable();

@@ -12,7 +12,7 @@ public class ExampleFileNotFoundException
 			throws IOException, 
 			FileNotFoundException
 	{
-		// TODO Auto-generated method stub
+		
 		File f = new File("C:\\Users\\monk_\\eclipse-workspace\\Java\\src\\exception\\dummy.txt");
 		
 		FileReader fr = new FileReader(f);

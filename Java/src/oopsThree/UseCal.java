@@ -45,7 +45,7 @@ public class UseCal
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Calculator c = new Calculator();
 		System.out.println(c.getSum(100, 10));
 		System.out.println(c.getDif(100, 10));

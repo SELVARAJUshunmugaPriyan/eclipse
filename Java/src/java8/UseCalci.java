@@ -3,7 +3,7 @@ package java8;
 public class UseCalci {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Calci add = (x, y) -> x + y;
 		System.out.println(add.getAdd(5, 3));
 		Calci sub = (x, y) -> x - y;

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class QuestionTwentyEight {
 	// SquareNumber
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		int N = 16;
 //		System.out.println("Square is " + (N * N));
 		Scanner scn = new Scanner(System.in);

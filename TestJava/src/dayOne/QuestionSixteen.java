@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class QuestionSixteen {
 	// HeightAndWeight
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Scanner scn = new Scanner(System.in);
 		
 //		float personHeight = 166.67f;

@@ -11,7 +11,7 @@ class StudentSection {
 public class UseStudentSection {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		StudentSection s1 = new StudentSection();
 		StudentSection s2 = new StudentSection();
 		StudentSection s3 = new StudentSection();

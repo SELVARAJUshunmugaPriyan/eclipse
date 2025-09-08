@@ -36,7 +36,7 @@ public class Print2DMatrixThree {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Scanner scn = new Scanner(System.in);
 //		Print2DMatrixThree prnt = new Print2DMatrixThree();
 		

@@ -3,7 +3,7 @@ package dayOne;
 public class PrintName{
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int intVal = 0;
 		float floatVal = 0.25f;
 		long longVal = 9176453505l;

@@ -5,7 +5,7 @@ public class UseStickPen
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		StickPen s1 = new StickPen(), s2 = new StickPen(), s3 = new StickPen();
 		StickPen S[] = {s1, s2, s3};
 		int sum = 0;

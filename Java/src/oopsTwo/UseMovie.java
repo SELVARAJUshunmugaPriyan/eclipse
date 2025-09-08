@@ -32,7 +32,7 @@ public class UseMovie
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		ActionMovie a = new ActionMovie();
 		System.out.println(a.getFightSequence(3));
 		System.out.println(a.getFightSequence(4));

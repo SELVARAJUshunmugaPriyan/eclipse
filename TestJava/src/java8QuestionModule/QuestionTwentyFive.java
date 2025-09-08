@@ -9,7 +9,7 @@ interface PriceCalculation
 public class QuestionTwentyFive {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		PriceCalculation frstCal = (x, y, z) -> (int) (x * ((1 - z / 100.0) + (1 - z / 100.0) * y / 100.0));
 		System.out.println(frstCal.findNetPrice(1000, 5, 25));
 		PriceCalculation scndCal = (x, y, z) -> x + y - z;

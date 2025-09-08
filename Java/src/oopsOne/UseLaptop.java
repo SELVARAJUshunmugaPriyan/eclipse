@@ -41,7 +41,7 @@ class Laptop
 public class UseLaptop {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Battery b = new Battery(2400, 1, "100mah");
 		Laptop l = new Laptop("DELL", "Black", 12000, b);
 		

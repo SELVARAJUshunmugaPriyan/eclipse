@@ -3,7 +3,7 @@ package conditions;
 public class ConditionsMonth {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int noOfMonth = 4;
 		
 		switch (noOfMonth) {

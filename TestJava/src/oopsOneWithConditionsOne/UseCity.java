@@ -5,7 +5,7 @@ public class UseCity
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		City b1 = new City(), b2 = new City(), b3 = new City();
 		City B[] = {b1, b2, b3};
 		int countMetro = 0, countCityState = 0, countLucky = 0;

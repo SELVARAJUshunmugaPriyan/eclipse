@@ -3,7 +3,7 @@ package conditions;
 public class ConditionsDirection {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		char direction = 'N';
 		
 		switch (direction) {

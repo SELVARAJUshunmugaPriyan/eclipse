@@ -5,7 +5,7 @@ public class UseBoard
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Board b1 = new Board(), b2 = new Board(), b3 = new Board();
 		Board B[] = {b1, b2, b3};
 		int countSquare = 0, countHeavy = 0, countPlastic = 0;

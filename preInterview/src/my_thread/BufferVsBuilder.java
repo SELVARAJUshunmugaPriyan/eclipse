@@ -3,7 +3,7 @@ package my_thread;
 public class BufferVsBuilder {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		StringBuffer sb1 = new StringBuffer("Buffer");
 		StringBuilder sb2 = new StringBuilder("Builder");
 		

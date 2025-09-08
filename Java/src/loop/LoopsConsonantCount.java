@@ -3,7 +3,7 @@ package loop;
 public class LoopsConsonantCount {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String s = "JAVAPROGRAMS";
 		char[] c = s.toCharArray();
 		int count = 0;

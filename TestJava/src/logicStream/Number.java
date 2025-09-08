@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Number {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		List<Integer> lst = Arrays.stream(args[0].split(","))
 								  .map(x -> Integer.parseInt(x))
 								  .toList();

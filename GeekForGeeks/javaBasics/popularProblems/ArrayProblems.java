@@ -176,7 +176,7 @@ public class ArrayProblems {
     }
     
 	public static void main(String[] args) throws FileNotFoundException {
-		// TODO Auto-generated method stub
+		
 //		System.out.println(secondMax(new int[] {10, 10, 5, 10}));
 //		try (Scanner scn = new Scanner(System.in)) {
 //			while (true) {

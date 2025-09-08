@@ -9,7 +9,7 @@ class Pen {
 public class UsePen {
 	// Class Pen and string operations
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Pen p1 = new Pen();
 		Pen p2 = new Pen();
 		

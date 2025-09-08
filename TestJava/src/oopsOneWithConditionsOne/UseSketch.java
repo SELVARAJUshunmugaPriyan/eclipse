@@ -5,7 +5,7 @@ public class UseSketch
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Sketch s1 = new Sketch(), s2 = new Sketch(), s3 = new Sketch();
 		Sketch S[] = {s1, s2, s3};
 		int sum = 0;

@@ -3,7 +3,7 @@ package dayTwo;
 public class StringMethodsTwo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String a = new String("onesoft");
 		String b = a.toUpperCase();
 		String c = b.toLowerCase();

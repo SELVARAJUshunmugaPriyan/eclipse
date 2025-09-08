@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class QuestionFour {
 	// Index of 'a' and character at 4 functions
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Scanner scn = new Scanner(System.in);
 		
 		String s;

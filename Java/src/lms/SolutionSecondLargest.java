@@ -3,7 +3,7 @@ package lms;
 public class SolutionSecondLargest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		String[] a = args[0].split(",");
 		
 		int[] A = new int[a.length];

@@ -3,7 +3,7 @@ package exception;
 public class UseAc {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Ac acs[] = {
 			new Ac("LG", "MDH001", 43000, 12),
 			new Ac("Samsung", "FX900", 48000, 6),

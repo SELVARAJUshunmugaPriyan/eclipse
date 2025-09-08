@@ -3,7 +3,7 @@ package lms;
 public class TypeConversion {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		int i = Integer.parseInt(args[0]);
 		System.out.println(i);
 		

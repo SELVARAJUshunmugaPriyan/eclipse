@@ -5,7 +5,7 @@ public class UseTelephone
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Telephone t1 = new Telephone(), t2 = new Telephone(), t3 = new Telephone();
 		Telephone T[] = {t1, t2, t3};
 		int tCount = 0;

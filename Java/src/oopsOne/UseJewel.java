@@ -54,7 +54,7 @@ public class UseJewel
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		Jewel jewelA = new Jewel(), jewelB = new Jewel();
 //		Gold g = new Gold();
 		Silver s = new Silver();

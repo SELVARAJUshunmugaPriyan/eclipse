@@ -22,7 +22,7 @@ public class RemoveElementCollections {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //		new RemoveElementCollections();
 //		new IndexRemoveArrayList();
 //		new ObjectRemoveArrayList();

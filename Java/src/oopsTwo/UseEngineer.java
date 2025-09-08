@@ -23,7 +23,7 @@ public class UseEngineer
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		
 		Employee e = new Employee();
 		
@@ -150,7 +150,7 @@ public class UseEngineer
 
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		
 		
 		Employee e = new Employee(1001, 25000, "Preethi", "HCL");
 		

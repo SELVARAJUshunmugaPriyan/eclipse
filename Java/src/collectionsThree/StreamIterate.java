@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 public class StreamIterate {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		Stream<Integer> streamA = Stream
 				.iterate(1, i -> i <= 20, i -> i * 2);
 		streamA.forEach(System.out::println);

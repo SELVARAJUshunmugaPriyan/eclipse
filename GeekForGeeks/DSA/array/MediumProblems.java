@@ -1,7 +1,9 @@
 package array;
 
+import java.util.Map;
 import java.util.List;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
@@ -17,6 +19,7 @@ import array.utility.TriConsumerLocale;
 public class MediumProblems extends MediumProblemsSuper {
 	
 	private static final boolean DEBUG = true;
+	private static final MediumProblems mediumProblems = new MediumProblems();
 	
 	void rearrangeArray(int[] arr, double nestd4) 
 	{
@@ -677,6 +680,340 @@ public class MediumProblems extends MediumProblemsSuper {
 		return -1;
 	}
 	
+	int majorityElement(int[] arr, double hashMap)
+	{
+		if (DEBUG) System.out.printf("In majorityElement(int[]=%s,#🗺)\n",
+				Arrays.toString(arr));
+		
+		Map<Integer, Integer> map = new HashMap<>();
+		
+		for (int i : arr) {
+			int freq = map.getOrDefault(i, 0) + 1;
+			if (freq > arr.length / 2) return i;
+			map.put(i, freq);
+		}
+		
+		return -1;
+	}
+	
+	int majorityElement(int[] arr, int mooreVoting)
+	{
+		if (DEBUG) System.out.printf("In majorityElement(int[]=%s,☑)\n",
+				Arrays.toString(arr));
+		
+		int candidate = -1, count = 0;
+		
+		for (int i : arr)
+			if (count == 0) {
+				candidate = i;
+				count = 1;
+			} else if (candidate == i)
+				count++;
+			else
+				count--;
+		
+		count = 0;
+		for (int i : arr)
+			if (candidate == i)
+				count++;
+		
+		if (count > arr.length / 2)
+			return candidate;
+				
+		return -1;
+	}
+	
+	int countTriangles(int[] arr, float nstd4)
+	{
+		if (DEBUG) System.out.printf("In countTriangles(int[]=%s,🪹4)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			int count = 0;
+			for (int i = 0; i < arr.length - 2; i++)
+				for (int j = i + 1; j < arr.length - 1; j++)
+					for (int k = j + 1; k < arr.length; k++) {
+						int a = arr[i], b = arr[j], c = arr[k];
+						if (a <= 0 || b <= 0 || c <= 0)
+							return -1;
+						if (a + b > c && a + c > b && b + c > a)
+							count++;
+					}
+			
+			return count;		
+		}
+		return -1;
+	}
+	
+	int countTriangles(int[] arr, double binarySearch)
+	{
+		if (DEBUG) System.out.printf("In countTriangles(int[]=%s,10🔍1)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			Arrays.sort(arr);
+			
+			if (arr[0] <= 0)
+				return -1;
+			
+			int count = 0;
+			for (int i = 0; i < arr.length - 2; i++)
+				for (int j = i + 1; j < arr.length - 1; j++) {
+					int lo = j + 1, hi = arr.length, mi,
+						target = arr[i] + arr[j];
+					while (lo < hi) {
+						mi = lo + (hi - lo) / 2;
+						if (arr[mi] < target)
+							lo = mi + 1;
+						else
+							hi = mi;
+					}
+					
+					count += lo - j - 1;
+				}
+			
+			return count;		
+		}
+		return -1;
+	}
+	
+	int countTriangles(int[] arr, int twoPointer)
+	{
+		if (DEBUG) System.out.printf("In countTriangles(int[]=%s,2*)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 2) {
+			Arrays.sort(arr);
+			
+			if (arr[0] <= 0)
+				return -1;
+			
+			int count = 0;
+			for (int i = 2; i < arr.length; i++) {
+				int left = 0, right = i - 1;
+				while (left < right) {
+					if (arr[left] + arr[right] > arr[i]) {
+						count += right - left;
+						right--;
+					} else {
+						left++;
+					}
+				}
+			}
+			
+			return count;		
+		}
+		return -1;
+	}
+	
+	int[] subArrayWithGivenSum(int[] arr, int k, float nstd4)
+	{
+		if (DEBUG) System.out.printf("In subArrayWithGivenSum(int[]=%s,int=%d,🪹4)\n",
+				Arrays.toString(arr), k);
+		
+		if (arr.length != 0) {
+			for (int i = 0, n = arr.length; i < n; i++)
+				for (int j = i, sum = arr[j]; j < n; j++, sum += j != n ? arr[j] : 0)
+					if (sum == k)
+						return new int[] {++i, ++j};
+		}
+		
+		return new int[] {-1};
+	}
+	
+	int[] subArrayWithGivenSum(int[] arr, int k, double slidingWindow)
+	{
+		if (DEBUG) System.out.printf("In subArrayWithGivenSum(int[]=%s,int=%d,▯⟶)\n",
+				Arrays.toString(arr), k);
+		
+		if (arr.length != 0) {
+			int l = 0, r = 0, res[] = new int[2];
+			int curr = 0;
+			for (int i = 0; i < arr.length; i++) {
+				curr += arr[i];
+				if (curr >= k) {
+					r = i;	
+					while (curr > k && l < r)
+						curr -= arr[l++];
+					
+					if (curr == k) {
+						res[0] = l + 1;
+						res[1] = r + 1;
+						return res;
+					}
+				}
+			}
+		}
+		
+		return new int[] {-1};
+	}
+	
+	int[] subArrayWithGivenSum(int[] arr, int k, int hashingPrfSum)
+	{
+		if (DEBUG) System.out.printf("In subArrayWithGivenSum(int[]=%s,int=%d,#🔙Σ)\n",
+				Arrays.toString(arr), k);
+		
+		if (arr.length != 0) {
+			Map<Integer, Integer> map = IntStream.rangeClosed(0, arr.length)
+												.mapToObj(i -> {
+													if (i == 0)
+														return "0.-1";
+													if (i != 1)
+														arr[0] += arr[i - 1];
+													return new String (i + "." + arr[0]);
+												})
+												.collect(Collectors.toMap(
+															s -> Integer.parseInt(s.split("\\.")[0]),
+															s -> Integer.parseInt(s.split("\\.")[1])));
+			
+			return IntStream.rangeClosed(1, arr.length)
+							.mapToObj(i -> new int[] {
+									map.entrySet()
+									  .stream()
+									  .filter(x -> (k != 0 &&
+									  			    x.getValue() == map.get(i) - k) ||
+											  	   (k == 0 &&
+											  	   !(x.getKey() >= i) &&
+											  	    x.getValue() == map.get(i)))
+									  .map(Map.Entry::getKey)
+									  .min(Comparator.comparingInt(x -> x))
+									  .orElse(-2) + 1, i
+									 })
+//							.peek(x -> System.out.println(Arrays.toString(x)))
+							.filter(x -> x[0] != -1)
+							.findFirst()
+							.orElse(new int[] {-1});
+		}
+		
+		return new int[] {-1};
+	}
+	
+	int longestSubArray01(int[] arr, double nstd4)
+	{
+		if (DEBUG) System.out.printf("In longestSubArray01(int[]=%s,🪹4)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 1) {
+			int maxLength = 0;
+			
+			for (int i = 0; i < arr.length; i++) {
+				int sum = 0;
+				for (int j = i; j < arr.length; j++) {
+					sum += (arr[j] == 0) ? -1 : 1;
+					
+					if (sum == 0)
+						maxLength = Math.max(maxLength, j - i + 1);
+				}
+			}
+				
+			
+			return maxLength;
+		}
+		
+		return 0;
+	}
+	
+	int longestSubArray01(int[] arr, int hashingPrfSum)
+	{
+		if (DEBUG) System.out.printf("In longestSubArray01(int[]=%s,#🔙Σ)\n",
+				Arrays.toString(arr));
+		
+		if (arr.length > 1) {
+			int maxLength = 0, prefixSum = 0;
+			Map<Integer, Integer> map = new HashMap<>();
+			
+			for (int i = 0; i < arr.length; i++) {
+				prefixSum += arr[i] == 0 ? -1 : 1;
+				
+				if (prefixSum == 0)
+					maxLength = i + 1;
+				
+				if (map.containsKey(prefixSum))
+					maxLength = Math.max(maxLength, i - map.get(prefixSum));
+				else
+					map.put(prefixSum, i);
+			}
+			
+			return maxLength;
+		}
+		
+		return 0;
+	}
+	
+	int longestSpanWithSum(int[] arr1, int[] arr2, float nstd4)
+	{
+		if (DEBUG) System.out.printf("In longestSpanWithSum(int[]=%s,int[]=%s,🪹4)\n",
+				Arrays.toString(arr1), Arrays.toString(arr2));
+		
+		if (arr1.length == arr2.length && arr1.length != 0) {
+			int res = 0;
+			
+			for (int i = 0; i < arr1.length; i++) {
+				int prfSm1 = 0, prfSm2 = 0;
+				for (int j = i; j < arr1.length; j++) {
+					prfSm1 += arr1[j];
+					prfSm2 += arr2[j];
+					if (prfSm1 == prfSm2)
+						res = Math.max(res, j - i + 1);
+				}
+			}
+			return res;
+		}
+		return -1;
+	}
+	
+	int longestSpanWithSum(int[] arr1, int[] arr2, double diffArr)
+	{
+		if (DEBUG) System.out.printf("In longestSpanWithSum(int[]=%s,int[]=%s,[]-[])\n",
+				Arrays.toString(arr1), Arrays.toString(arr2));
+		
+		if (arr1.length == arr2.length && arr1.length != 0) {
+			int res = 0, prfSm1 = 0, prfSm2 = 0;
+			int[] diff = new int[2 * arr1.length + 1];
+			Arrays.fill(diff, -1);
+			
+			for (int i = 0; i < arr1.length; i++) {
+				prfSm1 += arr1[i];
+				prfSm2 += arr2[i];
+				int currDiff = prfSm1 - prfSm2;
+				int index = currDiff + arr1.length;
+				if (currDiff == 0)
+					res = Math.max(res, i + 1);
+				else if (diff[index] != -1)
+					res = Math.max(res, i - diff[index]);
+				else
+					diff[index] = i;
+			}
+			return res;
+		}
+		return -1;
+	}
+	
+	int longestSpanWithSum(int[] arr1, int[] arr2, int hashMap)
+	{
+		if (DEBUG) System.out.printf("In longestSpanWithSum(int[]=%s,int[]=%s,#🗺)\n",
+				Arrays.toString(arr1), Arrays.toString(arr2));
+		
+		if (arr1.length == arr2.length && arr1.length != 0) {
+			Map<Integer, Integer> map = new HashMap<>();
+			int res = 0, prfSm1 = 0, prfSm2 = 0;
+			
+			for (int i = 0; i < arr1.length; i++) {
+				prfSm1 += arr1[i];
+				prfSm2 += arr2[i];
+				int currDiff = prfSm1 - prfSm2;
+				if (currDiff == 0)
+					res = Math.max(res, i + 1);
+				else if (map.containsKey(currDiff))
+					res = Math.max(res, i - map.get(currDiff));
+				else
+					map.put(currDiff, i);
+			}	
+			return res;
+		}
+		return -1;
+	}
+	
 	public static void main(String[] args) {
 		
 //		modifyArrayTest();
@@ -686,7 +1023,11 @@ public class MediumProblems extends MediumProblemsSuper {
 //		kthLargestSumTest();
 //		smallestMissingNumberTest();
 //		smallestSubarraySumTest();
-		majorityElementTest();
+//		majorityElementTest();
+//		countTrianglesTest();
+//		subArrayWithGivenSumTest();
+//		longestSubArray01Test();
+		longestSpanWithSumTest();
 	}
 
 	private static void modifyArrayTest()
@@ -696,19 +1037,19 @@ public class MediumProblems extends MediumProblemsSuper {
 		short opt = 1;
 		
 		int res[] = new int[] {-1, -1, 1, 8, 3, 2, -1, 4, -1};
-		new MediumProblems().rearrangeArray(res, opt);
+		mediumProblems.rearrangeArray(res, opt);
 		assert Arrays.equals(res, new int[] {-1, 1, 2, 3, 4, -1, -1, -1, 8});
 		
 		System.out.println(Arrays.toString(res));
 		
 		res = new int[] {-1, -1, 1, 6, 9, 3, 2, -1, 4, -1};
-		new MediumProblems().rearrangeArray(res, opt);
+		mediumProblems.rearrangeArray(res, opt);
 		assert Arrays.equals(res, new int[] {-1, 1, 2, 3, 4, -1, 6, -1, -1, 9});
 		
 		System.out.println(Arrays.toString(res));
 		
 		res = new int[] {-1, 2, -1, 1, 3};
-		new MediumProblems().rearrangeArray(res, opt);
+		mediumProblems.rearrangeArray(res, opt);
 		assert Arrays.equals(res, new int[] {-1, 1, 2, 3, -1});
 		
 		System.out.println(Arrays.toString(res));
@@ -721,16 +1062,16 @@ public class MediumProblems extends MediumProblemsSuper {
 		int opt = 1;
 		
 		int arr[] = {8, -8, 9, -9, 10, -11, 12};
-		assert new MediumProblems().maximumCircularSubarray(arr, opt) == 22;
-		System.out.println(new MediumProblems().maximumCircularSubarray(arr, opt));
+		assert mediumProblems.maximumCircularSubarray(arr, opt) == 22;
+		System.out.println(mediumProblems.maximumCircularSubarray(arr, opt));
 		
 		arr = new int[] {4, -1, -2, 3};
-		int res = new MediumProblems().maximumCircularSubarray(arr, opt);
+		int res = mediumProblems.maximumCircularSubarray(arr, opt);
 		assert res == 7;
 		System.out.println(res);
 		
 		arr = new int[] {5, -2, 3, 4};
-		res = new MediumProblems().maximumCircularSubarray(arr, opt);
+		res = mediumProblems.maximumCircularSubarray(arr, opt);
 		assert res == 12;
 		System.out.println(res);
 	}
@@ -743,37 +1084,37 @@ public class MediumProblems extends MediumProblemsSuper {
 		int opt = 1;
 		
 		int[] arr = {10, 11, 12}, index = {1, 0, 2};
-		new MediumProblems().reorderAnArray(arr, index, opt);
+		mediumProblems.reorderAnArray(arr, index, opt);
 		assert Arrays.equals(arr, new int[] {11, 10, 12});
 		System.out.println(Arrays.toString(arr));
 		
 		arr = new int[] {1, 2, 3, 4};
 		index = new int[] {3, 2, 0, 1};
-		new MediumProblems().reorderAnArray(arr, index, opt);
+		mediumProblems.reorderAnArray(arr, index, opt);
 		assert Arrays.equals(arr, new int[] {3, 4, 2, 1});
 		System.out.println(Arrays.toString(arr));
 		
 		arr = new int[] {50, 40, 70, 60, 90};
 		index = new int[] {3, 0, 4, 1, 2};
-		new MediumProblems().reorderAnArray(arr, index, opt);
+		mediumProblems.reorderAnArray(arr, index, opt);
 		assert Arrays.equals(arr, new int[] {40, 60, 90, 50, 70});
 		System.out.println(Arrays.toString(arr));
 		
 		arr = new int[] {};
 		index = new int[] {1};
-		new MediumProblems().reorderAnArray(arr, index, opt);
+		mediumProblems.reorderAnArray(arr, index, opt);
 		assert Arrays.equals(arr, new int[] {});
 		System.out.println(Arrays.toString(arr));
 		
 		arr = new int[] {2};
 		index = new int[] {1};
-		new MediumProblems().reorderAnArray(arr, index, opt);
+		mediumProblems.reorderAnArray(arr, index, opt);
 		assert Arrays.equals(arr, new int[] {2});
 		System.out.println(Arrays.toString(arr));
 		
 		arr = new int[] {2, 3};
 		index = new int[] {1};
-		new MediumProblems().reorderAnArray(arr, index, opt);
+		mediumProblems.reorderAnArray(arr, index, opt);
 		assert Arrays.equals(arr, new int[] {2, 3});
 		System.out.println(Arrays.toString(arr));
 	}
@@ -784,15 +1125,15 @@ public class MediumProblems extends MediumProblemsSuper {
 //		double opt = 1;
 		int opt = 1;
 		
-		int arr[] = new MediumProblems().productExceptSelf(new int[] {10, 3, 5, 6, 2}, opt);
+		int arr[] = mediumProblems.productExceptSelf(new int[] {10, 3, 5, 6, 2}, opt);
 		assert Arrays.equals(arr, new int[] {180, 600, 360, 300, 900});
 		System.out.println(Arrays.toString(arr));
 		
-		arr = new MediumProblems().productExceptSelf(new int[] {12, 0}, opt);
+		arr = mediumProblems.productExceptSelf(new int[] {12, 0}, opt);
 		assert Arrays.equals(arr, new int[] {0, 12});
 		System.out.println(Arrays.toString(arr));
 		
-		arr = new MediumProblems().productExceptSelf(new int[] {}, opt);
+		arr = mediumProblems.productExceptSelf(new int[] {}, opt);
 		assert Arrays.equals(arr, new int[] {});
 		System.out.println(Arrays.toString(arr));		
 	}
@@ -803,23 +1144,23 @@ public class MediumProblems extends MediumProblemsSuper {
 //		double opt = 1;
 		int opt = 1;
 		
-		Integer res = new MediumProblems().kthLargestSum(new int[] {20, -5, -1}, 3, opt);
+		Integer res = mediumProblems.kthLargestSum(new int[] {20, -5, -1}, 3, opt);
 		assert res == 14;
 		System.out.println(res);
 		
-		res = new MediumProblems().kthLargestSum(new int[] {10, -10, 20, -40}, 6, opt);
+		res = mediumProblems.kthLargestSum(new int[] {10, -10, 20, -40}, 6, opt);
 		assert res == -10;
 		System.out.println(res);
 		
-		res = new MediumProblems().kthLargestSum(new int[] {1}, 2, opt);
+		res = mediumProblems.kthLargestSum(new int[] {1}, 2, opt);
 		assert res == null;
 		System.out.println(res);
 		
-		res = new MediumProblems().kthLargestSum(new int[] {}, 1, opt);
+		res = mediumProblems.kthLargestSum(new int[] {}, 1, opt);
 		assert res == null;
 		System.out.println(res);
 		
-		res = new MediumProblems().kthLargestSum(new int[] {1, 2, 3}, 0, opt);
+		res = mediumProblems.kthLargestSum(new int[] {1, 2, 3}, 0, opt);
 		assert res == 6;
 		System.out.println(res);
 	}
@@ -833,27 +1174,27 @@ public class MediumProblems extends MediumProblemsSuper {
 		int opt = 1;
 		
 		int arr[] = {0, 1, 2, 6, 9};
-		int res = new MediumProblems().smallestMissingNumber(arr, opt);
+		int res = mediumProblems.smallestMissingNumber(arr, opt);
 		assert res == 3;
 		System.out.println(res);
 		
 		arr = new int[] {4, 5, 10, 11};
-		res = new MediumProblems().smallestMissingNumber(arr, opt);
+		res = mediumProblems.smallestMissingNumber(arr, opt);
 		assert res == 0;
 		System.out.println(res);
 		
 		arr = new int[] {0, 1, 2, 3};
-		res = new MediumProblems().smallestMissingNumber(arr, opt);
+		res = mediumProblems.smallestMissingNumber(arr, opt);
 		assert res == 4;
 		System.out.println(res);
 		
 		arr = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 10};
-		res = new MediumProblems().smallestMissingNumber(arr, opt);
+		res = mediumProblems.smallestMissingNumber(arr, opt);
 		assert res == 8;
 		System.out.println(res);
 		
 		arr = new int[0];
-		res = new MediumProblems().smallestMissingNumber(arr, opt);
+		res = mediumProblems.smallestMissingNumber(arr, opt);
 		assert res == -1;
 		System.out.println(res);
 	}
@@ -864,15 +1205,15 @@ public class MediumProblems extends MediumProblemsSuper {
 //		double opt = 1;
 		int opt = 1;
 		
-		int res = new MediumProblems().smallestSubarraySum(new int[] {1, 4, 45, 6, 0, 19}, 51, opt);
+		int res = mediumProblems.smallestSubarraySum(new int[] {1, 4, 45, 6, 0, 19}, 51, opt);
 		assert res == 3;
 		System.out.println(res);
 		
-		res = new MediumProblems().smallestSubarraySum(new int[] {1, 10, 5, 2, 7}, 100, opt);
+		res = mediumProblems.smallestSubarraySum(new int[] {1, 10, 5, 2, 7}, 100, opt);
 		assert res == 0;
 		System.out.println(res);
 		
-		res = new MediumProblems().smallestSubarraySum(new int[0], 0, opt);
+		res = mediumProblems.smallestSubarraySum(new int[0], 0, opt);
 		assert res == 0;
 		System.out.println(res);
 	}
@@ -880,27 +1221,131 @@ public class MediumProblems extends MediumProblemsSuper {
 	private static void majorityElementTest()
 	{
 //		short opt = 1;
-		float opt = 1;
+//		float opt = 1;
 //		double opt = 1;
-//		int opt = 1;
+		int opt = 1;
 		
-		int res = new MediumProblems().majorityElement(new int[] {1, 1, 2, 1, 3, 5, 1}, opt);
+		int res = mediumProblems.majorityElement(new int[] {1, 1, 2, 1, 3, 5, 1}, opt);
 		assert res == 1;
 		System.out.println(res);
 		
-		res = new MediumProblems().majorityElement(new int[] {7}, opt);
+		res = mediumProblems.majorityElement(new int[] {7}, opt);
 		assert res == 7;
 		System.out.println(res);
 		
-		res = new MediumProblems().majorityElement(new int[] {2, 13}, opt);
+		res = mediumProblems.majorityElement(new int[] {2, 13}, opt);
 		assert res == -1;
 		System.out.println(res);
 		
-		res = new MediumProblems().majorityElement(new int[0], opt);
+		res = mediumProblems.majorityElement(new int[0], opt);
 		assert res == -1;
 		System.out.println(res);
 	}
 	
+	private static void countTrianglesTest()
+	{
+//		float opt = 1;
+//		double opt = 1;
+		int opt = 1;
+		
+		int res = mediumProblems.countTriangles(new int[] {4, 6, 3, 7}, opt);
+		assert res == 3 : "expected 3 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.countTriangles(new int[] {10, 21, 22, 100, 101, 200, 300}, opt);
+		assert res == 6 : "expected 6 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.countTriangles(new int[] {1, 2, 3}, opt);
+		assert res == 0 : "expected 0 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.countTriangles(new int[2], opt);
+		assert res == -1 : "expected -1 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.countTriangles(new int[] {1, -1, 2}, opt);
+		assert res == -1 : "expected -1 but res=" + res;
+		System.out.println(res);
+	}
+	
+	private static void subArrayWithGivenSumTest()
+	{
+//		float opt = 1;
+		double opt = 1;
+//		int opt = 1;
+		
+		int[] res = mediumProblems.subArrayWithGivenSum(new int[] {15, 2, 4, 8, 9, 5, 10, 23}, 23, opt);
+		assert Arrays.equals(res, new int[] {2, 5}) : "Expected {2, 5} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+		
+		res = mediumProblems.subArrayWithGivenSum(new int[] {1, 10, 4, 0, 3, 5}, 7, opt);
+		assert Arrays.equals(res, new int[] {3, 5}) : "Expected {3, 5} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+		
+		res = mediumProblems.subArrayWithGivenSum(new int[] {1, 4}, 0, opt);
+		assert res[0] == -1 : "Expected {-1} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+		
+		res = mediumProblems.subArrayWithGivenSum(new int[] {1, 2, -2, 1}, 0, opt);
+		assert Arrays.equals(res, new int[] {2, 3}) : "Expected {2, 3} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+		
+		res = mediumProblems.subArrayWithGivenSum(new int[] {1, 2, 0, 1}, 0, opt);
+		assert Arrays.equals(res, new int[] {3, 3}) : "Expected {3, 3} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+	}
+	
+	private static void longestSubArray01Test()
+	{
+		double opt = 1;
+//		int opt = 1;
+		
+		int res = mediumProblems.longestSubArray01(new int[] {1, 0, 1, 1, 1, 0, 0}, opt);
+		assert res == 6 : "Expected 6 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.longestSubArray01(new int[] {0, 0, 1, 1, 0}, opt);
+		assert res == 4 : "Expected 6 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.longestSubArray01(new int[1], opt);
+		assert res == 0 : "Expected 6 but res=" + res;
+		System.out.println(res);
+	}
+	
+	private static void longestSpanWithSumTest()
+	{
+		float opt = 1;
+//		double opt = 1;
+//		int opt = 1;
+		
+		int res = mediumProblems.longestSpanWithSum(new int[] {0, 1, 0, 0, 0, 0},
+				new int[] {1, 0, 1, 0, 0, 1}, opt);
+		assert res == 4 : "Expected 4 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.longestSpanWithSum(new int[] {0, 1, 0, 1, 1, 1, 1},
+				new int[] {1, 1, 1, 1, 1, 0, 1}, opt);
+		assert res == 6 : "Expected 6 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.longestSpanWithSum(new int[] {0, 0, 0}, new int[] {1, 1, 1}, opt);
+		assert res == 0 : "Expected 0 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.longestSpanWithSum(new int[0], new int[1], opt);
+		assert res == -1 : "Expected -1 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.longestSpanWithSum(new int[0], new int[0], opt);
+		assert res == -1 : "Expected -1 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.longestSpanWithSum(new int[1], new int[0], opt);
+		assert res == -1 : "Expected -1 but res=" + res;
+		System.out.println(res);
+	}
 }
 
 class MediumProblemsSuper {

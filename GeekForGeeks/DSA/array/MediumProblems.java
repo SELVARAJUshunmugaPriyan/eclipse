@@ -1,15 +1,18 @@
 package array;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.List;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.stream.IntStream;
 import java.util.stream.Collectors;
+import java.util.function.BiPredicate;
 
 import array.utility.Recursive;
 import array.utility.BiFunctionLocale;
@@ -1014,6 +1017,370 @@ public class MediumProblems extends MediumProblemsSuper {
 		return -1;
 	}
 	
+	int[] pairSumArray(int[] arr)
+	{
+		if (DEBUG) System.out.printf("In pairSumArray(int[]=%s)\n", Arrays.toString(arr));
+		
+		if (arr.length > 0) {
+			
+			if (arr.length == 1)
+				return new int[] {1, arr[0] - 1};
+			
+			int n = (int) ((1 + Math.sqrt(1 + 8 * arr.length)) / 2);
+			int res[] = new int[n];
+			
+			res[0] = (arr[0] + arr[1] - arr[n - 1]) / 2;
+			
+			for (int i = 1; i < n; i++) 
+				res[i] = arr[i - 1] - res[0];
+			
+			return res;
+		}
+	
+		return new int[0];
+	}
+	
+	ArrayList<int[]> sum2(int[] arr, int target, double nstd4)
+	{
+		if (DEBUG) System.out.printf("In sum2(int[]=%s,int=%d,🪹4)\n",
+							Arrays.toString(arr), target);
+		
+		if (arr.length > 1) {
+			ArrayList<int[]> res = new ArrayList<>();
+			
+			for (int i = 0; i < arr.length - 1; i++)
+				for (int j = i + 1; j < arr.length; j++)
+					if (arr[i] + arr[j] == target)
+						res.add(new int[] {i, j});
+			
+			if (res.isEmpty())
+				res.add(new int[0]);
+			
+			return res;
+		}
+		
+		return new ArrayList<>(List.of(new int[0]));
+	}
+	
+	ArrayList<int[]> sum2(int[] arr, int target, int hashing)
+	{
+		if (DEBUG) System.out.printf("In sum2(int[]=%s,int=%d,###)\n",
+							Arrays.toString(arr), target);
+		
+		if (arr.length > 1) {
+			Map<Integer, ArrayList<Integer>> map = new HashMap<>();
+			
+			ArrayList<int[]> res = new ArrayList<>();
+			
+			for (int i = 0; i < arr.length; i++) {
+				if (map.containsKey(target - arr[i]))
+					for (int j : map.get(target - arr[i]))
+						res.add(new int[] {j, i});
+				
+				if (!map.containsKey(arr[i]))
+					map.put(arr[i], new ArrayList<>());
+				
+				map.get(arr[i]).add(i);
+			}
+
+			Collections.sort(res, new Comparator<>() {
+				@Override
+				public int compare(int[] x, int[] y)
+				{
+					if (x[0] == y[0])
+						return x[1] - y[1];
+					return x[0] - y[0];
+				}
+			});
+			
+			if (res.isEmpty())
+				res.add(new int[0]);
+				
+			return res;
+		}
+		
+		return new ArrayList<>(List.of(new int[0]));
+	}
+	
+	ArrayList<int[]> sum2Distinct(int[] arr, int target, float nstd4)
+	{
+		if (DEBUG) System.out.printf("In sum2Distinct(int[]=%s,int=%d,🪹4)\n",
+							Arrays.toString(arr), target);
+		
+		if (arr.length > 1) {
+			ArrayList<int[]> res = new ArrayList<>();
+			
+			for (int i = 0; i < arr.length - 1; i++)
+				innerloop:
+				for (int j = i + 1; j < arr.length; j++)
+					if (arr[i] + arr[j] == target) {
+						int[] tmp = {arr[i], arr[j]};
+						Arrays.sort(tmp);
+						for (int[] ref : res)
+							if (Arrays.equals(ref, tmp))
+								continue innerloop;
+						res.add(tmp);
+					}
+			
+			if (!res.isEmpty())
+				return res;
+		}
+		return new ArrayList<>(List.of(new int[0]));
+	}
+	
+	ArrayList<int[]> sum2Distinct(int[] arr, int target, double hashSet)
+	{
+		if (DEBUG) System.out.printf("In sum2Distinct(int[]=%s,int=%d,#{})\n",
+							Arrays.toString(arr), target);
+		
+		if (arr.length > 1) {
+			
+			Set<List<Integer>> set = new HashSet<>();
+			
+			for (int i = 0; i < arr.length - 1; i++)
+				for (int j = i + 1; j < arr.length; j++)
+					if (arr[i] + arr[j] == target)
+						set.add(List.of(arr[i], arr[j]));
+			
+			if (!set.isEmpty())
+				return set.stream()
+						  .map(x -> x.get(0) < x.get(1) ? new int[] {x.get(0), x.get(1)} : new int[] {x.get(1), x.get(0)})
+						  .collect(Collectors.toCollection(ArrayList::new));
+		}
+		
+		return new ArrayList<>(List.of(new int[0]));
+	}
+	
+	ArrayList<int[]> sum2Distinct(int[] arr, int target, long twoPtr)
+	{
+		if (DEBUG) System.out.printf("In sum2Distinct(int[]=%s,int=%d,2*)\n",
+							Arrays.toString(arr), target);
+		
+		if (arr.length > 1) {
+			ArrayList<int[]> res = new ArrayList<>();
+			int l = 0, r = arr.length - 1;
+			
+			Arrays.sort(arr);
+			
+			while (l < r)
+				if (l > 0 && arr[l] == arr[l - 1])
+					l++;
+				else if (r < arr.length - 1 && arr[r] == arr[r + 1])
+					r--;
+				else {
+					if (arr[l] + arr[r] == target)
+						res.add(new int[] {arr[l++], arr[r--]});
+					else if (arr[l] + arr[r] < target)
+						l++;
+					else
+						r--;
+				}
+			
+			if (!res.isEmpty())
+				return res;
+		}
+		
+		return new ArrayList<>(List.of(new int[0]));
+	}
+	
+	@Override
+	ArrayList<int[]> sum2Distinct(int[] arr, int target, int hashMap)
+	{
+		if (hashMap == 2)		
+			return super.sum2Distinct(arr, target, hashMap);
+			
+		if (DEBUG) System.out.printf("In sum2Distinct(int[]=%s,int=%d,#🗺)\n",
+							Arrays.toString(arr), target);
+		
+		if (arr.length > 1) {
+			
+			Map<Integer, Integer> map = new HashMap<>();
+			ArrayList<int[]> res = new ArrayList<>();
+			
+			for (int i : arr) {
+				int freq = map.getOrDefault(i, 0);
+				
+				if (freq == 1 && i + i == target)
+					res.add(new int[] {i, i});
+				
+				if (freq == 0 && map.containsKey(target - i)) {
+					if (target - i > i)
+						res.add(new int[] {i, target - i});
+					else
+						res.add(new int[] {target - i, i});
+				}
+				
+				map.put(i, freq + 1);
+			}
+			
+			if (!res.isEmpty())
+				return res;
+		}
+		
+		return new ArrayList<>(List.of(new int[0]));
+	}
+	
+	boolean sum3ExistsBy(int[] arr, int target, float nstd4)
+	{
+		if (DEBUG) System.out.printf("In sum3ExistsBy(int[]=%s,int=%d,🪹4)\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 2) {
+			for (int i = 0; i < arr.length - 2; i++)
+				for (int j = i + 1; j < arr.length - 1; j++)
+					for (int k = j + 1; k < arr.length; k++)
+						if (arr[i] + arr[j] + arr[k] == target)
+							return true;
+		}
+		
+		return false;
+	}
+	
+	boolean sum3ExistsBy(int[] arr, int target, double hashSet)
+	{
+		if (DEBUG) System.out.printf("In sum3ExistsBy(int[]=%s,int=%d,#{})\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 2) {
+			for (int i = 0; i < arr.length - 2; i++) {
+				Set<Integer> set = new HashSet<>();
+				for (int j = i + 1; j < arr.length; j++) {
+					int second = target - arr[i] - arr[j];
+					if (set.contains(second))
+						return true;
+					set.add(arr[j]);
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	boolean sum3ExistsBy(int[] arr, int target, int sort2Ptr)
+	{
+		if (DEBUG) System.out.printf("In sum3ExistsBy(int[]=%s,int=%d,A↓z2*)\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 2) {
+			Arrays.sort(arr);
+			
+			for (int i = 0, l = i + 1, r = arr.length - 1, sum = 0;
+					i < arr.length - 2; l = ++i + 1, r = arr.length - 1)
+				while (l < r)
+					if ((sum = arr[i] + arr[l] + arr[r]) == target)
+						return true;
+					else if (sum < target)
+						l++;
+					else
+						r--;
+		}
+		
+		return false;
+	}
+	
+	Integer sum3ClosestTriplet(int[] arr, int target, double nstd4)
+	{
+		if (DEBUG) System.out.printf("In sum3ClosestTriplet(int[]=%s,int=%d,🪹4)\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 2) {
+			int[] res = {Integer.MAX_VALUE, Integer.MIN_VALUE};
+			
+			for (int i = 0; i < arr.length - 2; i++)
+				for (int j = i + 1; j < arr.length - 1; j++)
+					for (int k = j + 1; k < arr.length; k++) {
+						int sum = arr[i] + arr[j] + arr[k], diff = Math.abs(sum - target);
+						if (diff < res[0]) {
+							res[0] = diff;
+							res[1] = sum;
+						} else if (diff == res[0])
+							res[1] = Math.max(res[1], sum);
+					}
+			
+			return res[1];
+		}
+		
+		return null;
+	}
+	
+	Integer sum3ClosestTriplet(int[] arr, int target, int sort2Ptr)
+	{
+		if (DEBUG) System.out.printf("In sum3ClosestTriplet(int[]=%s,int=%d,A↓z2*)\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 2) {
+			Arrays.sort(arr);
+			int res = 0;
+			int minDiff = Integer.MAX_VALUE;
+			
+			for (int i = 0; i < arr.length - 2; i++) {
+				int l = i + 1, r = arr.length - 1;
+				while (l < r) {
+					int currSum = arr[i] + arr[l] + arr[r];
+					
+					if (Math.abs(currSum - target) < minDiff) {
+						minDiff = Math.abs(currSum - target);
+						res = currSum;
+					} else if (Math.abs(currSum - target) == minDiff)
+						res = Math.max(res, currSum);
+					
+					if (currSum > target)
+						r--;
+					else
+						l++;
+				}
+			}
+			
+			return res;
+		}
+		
+		return null;
+	}
+	
+	List<Integer> sum4FindAny(int[] arr, int target, double nstd4)
+	{
+		if (DEBUG) System.out.printf("In sum4FindAny(int[]=%s,int=%d,🪹4)\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 3) {
+			for (int i = 0; i < arr.length - 3; i++)
+				for (int j = i + 1; j < arr.length - 2; j++)
+					for (int k = j + 1; k < arr.length - 1; k++)
+						for (int l = k + 1; l < arr.length; l++)
+							if (arr[i] + arr[j] + arr[k] + arr[l] == target)
+								return List.of(arr[i], arr[j], arr[k], arr[l]);
+		}
+		
+		return null;
+	}
+	
+	List<Integer> sum4FindAny(int[] arr, int target, int sort2Ptr)
+	{
+		if (DEBUG) System.out.printf("In sum4FindAny(int[]=%s,int=%d,A↓z2*)\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 3) {
+			Arrays.sort(arr);
+			
+			for (int i = 0; i < arr.length - 3; i++)
+				for (int j = i + 1; j < arr.length - 2; j++) {
+					int l = j + 1, r = arr.length - 1;
+					while (l < r) {
+						int currSum = arr[i] + arr[j] + arr[l] + arr[r];
+						
+						if (currSum == target)
+							return List.of(arr[i], arr[j], arr[l], arr[r]);
+						else if (currSum > target)
+							r--;
+						else
+							l++;
+					}
+				}
+		}
+		
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		
 //		modifyArrayTest();
@@ -1027,7 +1394,13 @@ public class MediumProblems extends MediumProblemsSuper {
 //		countTrianglesTest();
 //		subArrayWithGivenSumTest();
 //		longestSubArray01Test();
-		longestSpanWithSumTest();
+//		longestSpanWithSumTest();
+//		pairSumArrayTest();
+//		sum2Test();
+//		sum2DistinctTest();
+//		sum3ExistsByTest();
+//		sum3ClosestTripletTest();
+		sum4FindAnyTest();
 	}
 
 	private static void modifyArrayTest()
@@ -1346,6 +1719,212 @@ public class MediumProblems extends MediumProblemsSuper {
 		assert res == -1 : "Expected -1 but res=" + res;
 		System.out.println(res);
 	}
+	
+	private static void pairSumArrayTest()
+	{
+		int res[] = mediumProblems.pairSumArray(new int[] {4, 5, 3});
+		assert Arrays.equals(res, new int[] {3, 1, 2}) : "Expected {3, 1, 2} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+		
+		res = mediumProblems.pairSumArray(new int[] {12, 8, 7, 10, 9, 5});
+		assert Arrays.equals(res, new int[] {5, 7, 3, 2}) : "Expected {5, 7, 3, 2} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+		
+		res = mediumProblems.pairSumArray(new int[] {3});
+		assert Arrays.equals(res, new int[] {1, 2}) : "Expected {1, 2} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+		
+		res = mediumProblems.pairSumArray(new int[0]);
+		assert res.length == 0 : "Expected {} but res=" + Arrays.toString(res);
+		System.out.println(Arrays.toString(res));
+	}
+	
+	private static void sum2Test()
+	{
+//		double opt = 1;
+		int opt = 1;
+		
+		BiPredicate<ArrayList<int[]>, ArrayList<int[]>> arrayListDeepEquals 
+			= (x, y) -> {
+				if (x.size() != y.size())
+					return false;
+				for (int i = 0; i < x.size(); i++)
+					if (!Arrays.equals(x.get(i), y.get(i)))
+						return false;
+				return true;
+			};
+		
+		ArrayList<int[]> res = mediumProblems.sum2(new int[] {10, 20, 30, 20, 10, 30}, 50, opt);
+		
+		String result = res.stream()
+				   		   .map(x -> Arrays.toString(x))
+				   		   .collect(Collectors.joining());
+		
+		assert arrayListDeepEquals.test(res, new ArrayList<>(List.of(
+					new int[] {1, 2},
+					new int[] {1, 5},
+					new int[] {2, 3},
+					new int[] {3, 5}
+				))) : "Expected {{1, 2}, {1, 5}, {2, 3}, {3, 5}} but res=" + result;
+		
+		System.out.println(result);
+		
+
+		res = mediumProblems.sum2(new int[] {10, 20, 30, 20, 10, 30}, 80, opt);
+		
+		result = res.stream()
+		   		    .map(x -> Arrays.toString(x))
+				   	.collect(Collectors.joining());
+		
+		assert arrayListDeepEquals.test(res, new ArrayList<>(List.of(new int[0]))) : "Expected {} but res=" + result;
+		
+		System.out.println(result);
+		
+		res = mediumProblems.sum2(new int[0], 80, opt);
+		
+		result = res.stream()
+	   		    .map(x -> Arrays.toString(x))
+			   	.collect(Collectors.joining());
+	
+		assert arrayListDeepEquals.test(res, new ArrayList<>(List.of(new int[0]))) : "Expected {} but res=" + result;
+	
+		System.out.println(result);
+	}
+	
+	private static void sum2DistinctTest()
+	{
+//		float opt = 1;
+//		double opt = 1;
+//		long opt = 1;
+		int opt = 2;
+		
+		BiPredicate<ArrayList<int[]>, ArrayList<int[]>> arrayListDeepEquals 
+			= (x, y) -> {
+				if (x.size() != y.size())
+					return false;
+				outerloop:
+				for (int i = 0; i < x.size(); i++) {
+					for (int j = 0; j < x.size(); j++)
+						if (Arrays.equals(x.get(i), y.get(j)))
+							continue outerloop;
+					return false;
+				}
+				return true;
+			};
+		
+		ArrayList<int[]> res = mediumProblems.sum2Distinct(new int[] {1, 5, 7, -1, 5}, 6, opt);
+		
+		String result = res.stream()
+				   		   .map(x -> Arrays.toString(x))
+				   		   .collect(Collectors.joining());
+		
+		assert arrayListDeepEquals.test(res, new ArrayList<>(List.of(
+					new int[] {1, 5},
+					new int[] {-1, 7}
+				))) : "Expected {{1, 5}, {-1, 7}} but res=" + result;
+		
+		System.out.println(result);
+		
+
+		res = mediumProblems.sum2Distinct(new int[] {1, 9, -1, 8, 6}, 4, opt);
+		
+		result = res.stream()
+		   		    .map(x -> Arrays.toString(x))
+				   	.collect(Collectors.joining());
+		
+		assert arrayListDeepEquals.test(res, new ArrayList<>(List.of(new int[0]))) : "Expected {} but res=" + result;
+		
+		System.out.println(result);
+		
+		res = mediumProblems.sum2Distinct(new int[0], 80, opt);
+		
+		result = res.stream()
+	   		    .map(x -> Arrays.toString(x))
+			   	.collect(Collectors.joining());
+	
+		assert arrayListDeepEquals.test(res, new ArrayList<>(List.of(new int[0]))) : "Expected {} but res=" + result;
+	
+		System.out.println(result);
+	}
+	
+	private static void sum3ExistsByTest()
+	{
+//		float opt = 1;
+//		double opt = 1;
+		int opt = 1;
+		
+		boolean res = mediumProblems.sum3ExistsBy(new int[] {1, 4, 45, 6, 10, 8}, 13, opt);
+		assert res : "Expected for {1, 4, 45, 6, 10, 8} and 13 : true but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.sum3ExistsBy(new int[] {1, 2, 4, 3, 6, 7}, 10, opt);
+		assert res : "Expected for {1, 2, 4, 3, 6, 7} and 10 : true but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.sum3ExistsBy(new int[] {40, 20, 10, 3, 6, 7}, 24, opt);
+		assert !res : "Expected for {40, 20, 10, 3, 6, 7} and 24 : false but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.sum3ExistsBy(new int[0], -1, opt);
+		assert !res : "Expected for {} and -1 : false but res=" + res;
+		System.out.println(res);
+	}
+	
+	private static void sum3ClosestTripletTest()
+	{
+//		double opt = 1;
+		int opt = 1;
+		
+		Integer res = mediumProblems.sum3ClosestTriplet(new int[] {-1, 2, 2, 4}, 4, opt);
+		assert res == 5 : "Expected for {-1, 2, 2, 4} and 4 : 5 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.sum3ClosestTriplet(new int[] {1, 10, 4, 5}, 10, opt);
+		assert res == 10 : "Expected for {1, 10, 4, 5} and 10 : 10 but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.sum3ClosestTriplet(new int[0], -1, opt);
+		assert res == null : "Expected for {} and -1 : null but res=" + res;
+		System.out.println(res);
+	}
+	
+	private static void sum4FindAnyTest()
+	{
+//		double opt = 1;
+		int opt = 1;
+		
+		ArrayList<Integer> ref = new ArrayList<>() {
+			@Override
+			public boolean equals(Object obj)
+			{
+				if (!(obj instanceof Iterable<?>))
+					return false;
+				int count = 0;
+				for (Object o : (Iterable<?>) obj)
+					if (++count > 0 && !this.contains(o))
+						return false;
+				if (count != this.size())
+					return false;
+				return true;
+			}
+		};
+		
+		List<Integer> res = mediumProblems.sum4FindAny(new int[] {2, 4, 6, 8, 1, 3}, 15, opt);
+		ref.clear();
+		ref.addAll(List.of(2, 4, 6, 3));
+		assert ref.equals(res) || 
+			res.stream().collect(Collectors.summingInt(x -> x)) == 15 :
+				"Expected for {2, 4, 6, 8, 1, 3} and 15 : " + ref + " but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.sum4FindAny(new int[] {1, 2, 3, 4, 10}, 20, opt);
+		assert res == null : "Expected for {1, 2, 3, 4, 10} and 20 : {} but res=" + res;
+		System.out.println(res);
+		
+		res = mediumProblems.sum4FindAny(new int[0], -1, opt);
+		assert res == null : "Expected for {} and -1 : null but res=" + res;
+		System.out.println(res);
+	}
 }
 
 class MediumProblemsSuper {
@@ -1431,6 +2010,34 @@ class MediumProblemsSuper {
 		}
 		
 		return -1;
+	}
+	
+	ArrayList<int[]> sum2Distinct(int[] arr, int target, int hashMap)
+	{
+		if (hashMap == 2) System.out.printf("In spr.sum2Distinct(int[]=%s,int=%d,#🗺)\n",
+				Arrays.toString(arr), target);
+		
+		if (arr.length > 1) {
+			ArrayList<int[]> res = new ArrayList<>();
+			Map<Integer, Integer> freq = new HashMap<>();
+			
+			for (int i : arr) {
+				int complement = target - i, compFreq = freq.getOrDefault(complement, 0),
+					iFreq = freq.getOrDefault(i, 0);
+				
+				if (complement == i && compFreq == 1)
+					res.add(new int[] {i, i});
+				else if (compFreq > 0 && iFreq == 0)
+					res.add( complement > i ? new int[] {i, complement} : new int[] {complement, i} );
+				
+				freq.put(i, iFreq + 1);
+			}
+			
+			if (!res.isEmpty())
+				return res;
+		}
+		
+		return new ArrayList<>(List.of(new int[0]));
 	}
 	
 }
